@@ -1,10 +1,9 @@
 import React from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
 import Grid from '@material-ui/core/Grid';
+import { styled } from '@material-ui/styles';
 
 import CardItem from './CardItem';
 import SectionHeader from '../../lib/text/SectionHeader';
-import { styled } from '@material-ui/styles';
 
 const backgroundShape = require('../../../assets/images/shape.svg');
 
