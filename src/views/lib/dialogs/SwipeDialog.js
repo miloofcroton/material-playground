@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import withStyles from '@material-ui/core/styles/withStyles';
+import { styled } from '@material-ui/styles';
+
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import BaseDialog from './BaseDialog';
@@ -45,25 +46,23 @@ const tutorialSteps = [
   },
 ];
 
-const styles = theme => ({
-  container: {
-    maxWidth: 600,
-    flexGrow: 1,
-    textAlign: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
-  },
-  stepsContainer: {
-    marginLeft: 72,
-    textAlign: 'left',
-    marginTop: 20,
-    height: 65
-  },
-  bottomMargin: {
-    marginBottom: theme.spacing.unit * 2
-  }
+
+const Container = styled('div')({
+  maxWidth: 600,
+  flexGrow: 1,
+  textAlign: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center'
 });
+
+const StepsContainer = styled('div')({
+  marginLeft: 72,
+  textAlign: 'left',
+  marginTop: 20,
+  height: 65
+});
+
 
 class SwipeDialog extends Component {
 
@@ -88,15 +87,16 @@ class SwipeDialog extends Component {
   };
 
   render() {
-    const { classes } = this.props;
     const maxSteps = tutorialSteps.length;
     const { activeStep } = this.state;
     return (
       <BaseDialog {...this.props}>
-        <div className={classes.container}>
-          <div className={classes.gutterBottom}>
+        <Container>
+
+          <div>
             <img width={100} src={logo} alt="alty" />
           </div>
+
           <div>
             <AutoPlaySwipeableViews
               axis='x'
@@ -107,7 +107,7 @@ class SwipeDialog extends Component {
               {tutorialSteps.map((step, index) => (
                 <div key={index}>
                   {Math.abs(activeStep - index) <= 2 ? (
-                    <img className={classes.img} src={step.imgPath} alt={step.label} />
+                    <img src={step.imgPath} alt={step.label} />
                   ) : null}
                 </div>
               ))}
@@ -115,8 +115,7 @@ class SwipeDialog extends Component {
             <MobileStepper
               steps={maxSteps}
               position="static"
-              activeStep={activeStep}
-              className={classes.mobileStepper}
+              activeStep={activeStep}y
               nextButton={
                 <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
                   Next
@@ -129,23 +128,26 @@ class SwipeDialog extends Component {
               }
             />
           </div>
-          <div className={classes.stepsContainer}>
+
+          <StepsContainer>
             <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
               {tutorialSteps[activeStep].label}
             </Typography>
             <Typography variant="body1" gutterBottom>
               {tutorialSteps[activeStep].description}
             </Typography>
-          </div>
+          </StepsContainer>
+
           <div>
             <Button component={Link} to='/dashboard' variant='contained' onClick={this.handleClose} color="primary" autoFocus>
                 Getting started
             </Button>
           </div>
-        </div>
+
+        </Container>
       </BaseDialog>
     )
   }
 }
 
-export default withRouter(withStyles(styles)(SwipeDialog));
+export default withRouter(SwipeDialog);

@@ -1,9 +1,7 @@
 import React from 'react';
 import { styled } from '@material-ui/styles';
-
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 const Container = styled('div')({
@@ -27,11 +25,9 @@ const BaseDialog = ({ open, onClose, children }) => {
     >
       <DialogTitle id="alert-dialog-title">Hello</DialogTitle>
       <DialogContent>
-        <DialogContentText id="alert-dialog-description">
-          <Container>
-            {children}
-          </Container>
-        </DialogContentText>
+        <Container>
+          {children}
+        </Container>
       </DialogContent>
     </Dialog>
   );

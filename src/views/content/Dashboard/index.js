@@ -12,7 +12,7 @@ import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 
 import SimpleLineChart from './SimpleLineChart';
 import Months from '../../lib/datetime/Months';
-import Loading from '../../lib/loading/Loading';
+import Loading from '../../lib/loading/Waiting';
 const numeral = require('numeral');
 numeral.defaultFormat('0,000');
 const backgroundShape = require('../../../assets/images/shape.svg');
