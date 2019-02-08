@@ -1,33 +1,30 @@
-import React, { Component } from 'react';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import React, { Component, Fragment } from 'react';
+
+import { HashRouter, Switch } from 'react-router-dom'
 import Switches from './layout/switches'
-import { blue, indigo } from '@material-ui/core/colors'
 
-const theme = createMuiTheme({
-  palette: {
-    secondary: {
-      main: blue[900]
-    },
-    primary: {
-      main: indigo[700]
-    }
-  },
-  typography: {
-    // Use the system font instead of the default Roboto font.
-    fontFamily: [
-      '"Lato"',
-      'sans-serif'
-    ].join(',')
-  }
-});
+import Head from './layout/head';
 
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import muiTheme from './layout/theme/mui'
+
+import ScrollToTop from './lib/ScrollTop'
 
 class App extends Component {
   render() {
     return (
       <div>
-        <MuiThemeProvider theme={theme}>
-          <Switches />
+        <MuiThemeProvider theme={muiTheme}>
+          <HashRouter>
+            <Fragment>
+              <Head/>
+              <ScrollToTop>
+                <Switch>
+                  <Switches/>
+                </Switch>
+              </ScrollToTop>
+            </Fragment>
+          </HashRouter>
         </MuiThemeProvider>
       </div>
     );
