@@ -210,7 +210,7 @@ class Signup extends Component {
                               onChange={this.handleChange}
                               input={
                                 <OutlinedInput
-                                  labelWidth={this.state.labelWidth}
+                                  labelWidth={0}
                                   name="receivingAccount"
                                 />
                               }

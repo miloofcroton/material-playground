@@ -163,7 +163,6 @@ class Dashboard extends Component {
     const { classes } = this.props;
     const { amount, period, start, monthlyPayment,
       monthlyInterest, data, loading } = this.state;
-    // const currentPath = this.props.location.pathname
 
     return (
       <React.Fragment>

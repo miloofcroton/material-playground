@@ -96,19 +96,19 @@ class Topbar extends Component {
   }
 
   current = () => {
-    if(this.props.currentPath === '/home') {
+    if(this.props.location.pathname === '/home') {
       return 0
     }
-    if(this.props.currentPath === '/dashboard') {
+    if(this.props.location.pathname === '/dashboard') {
       return 1
     }
-    if(this.props.currentPath === '/signup') {
+    if(this.props.location.pathname === '/signup') {
       return 2
     }
-    if(this.props.currentPath === '/wizard') {
+    if(this.props.location.pathname === '/wizard') {
       return 3
     }
-    if(this.props.currentPath === '/cards') {
+    if(this.props.location.pathname === '/cards') {
       return 4
     }
 
@@ -116,7 +116,6 @@ class Topbar extends Component {
 
   render() {
 
-    console.log(this.props.currentPath);
     const { classes } = this.props;
 
     return (
