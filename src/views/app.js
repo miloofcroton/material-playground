@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import Routes from './routes'
+import Switches from './layout/switches'
 import { blue, indigo } from '@material-ui/core/colors'
 
 const theme = createMuiTheme({
@@ -27,7 +27,7 @@ class App extends Component {
     return (
       <div>
         <MuiThemeProvider theme={theme}>
-          <Routes />
+          <Switches />
         </MuiThemeProvider>
       </div>
     );

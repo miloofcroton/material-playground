@@ -2,10 +2,11 @@ import React,  { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import CardItem from './cards/CardItem';
-import Topbar from './Topbar';
-import SectionHeader from './typo/SectionHeader';
-const backgroundShape = require('../../assets/images/shape.svg');
+
+import CardItem from '../../lib/cards/CardItem';
+import Topbar from '../../lib/Topbar';
+import SectionHeader from '../../lib/typo/SectionHeader';
+const backgroundShape = require('../../../assets/images/shape.svg');
 
 const styles = theme => ({
   root: {

@@ -8,17 +8,15 @@ import Grid from '@material-ui/core/Grid';
 import Slider from '@material-ui/lab/Slider';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
-import SimpleLineChart from './SimpleLineChart';
-import Months from './common/Months';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
-import Loading from './common/Loading';
 
-import Topbar from './Topbar';
-
+import SimpleLineChart from '../../lib/SimpleLineChart';
+import Months from '../../lib/common/Months';
+import Loading from '../../lib/common/Loading';
+import Topbar from '../../lib/Topbar';
 const numeral = require('numeral');
 numeral.defaultFormat('0,000');
-
-const backgroundShape = require('../../assets/images/shape.svg');
+const backgroundShape = require('../../../assets/images/shape.svg');
 
 const styles = theme => ({
   root: {

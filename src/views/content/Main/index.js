@@ -6,12 +6,11 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import InstructionDialog from './dialogs/InstructionDialog';
-import SwipeDialog from './dialogs/SwipeDialog';
 
-import Topbar from './Topbar';
-
-const backgroundShape = require('../../assets/images/shape.svg');
+import InstructionDialog from '../../lib/dialogs/InstructionDialog';
+import SwipeDialog from '../../lib/dialogs/SwipeDialog';
+import Topbar from '../../lib/Topbar';
+const backgroundShape = require('../../../assets/images/shape.svg');
 
 const styles = theme => ({
   root: {
@@ -122,9 +121,12 @@ class Main extends Component {
         <CssBaseline />
         <Topbar />
         <div className={classes.root}>
+
           <Grid container justify="center">
+
             <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
-              <Grid item xs={12} md={4}>
+
+            <Grid item xs={12} md={4}>
                 <Paper className={classes.paper}>
                   <div className={classes.box}>
                     <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
@@ -141,6 +143,7 @@ class Main extends Component {
                   </div>
                 </Paper>
               </Grid>
+
               <Grid item xs={12} md={4}>
                 <Paper className={classes.paper}>
                   <div className={classes.box}>
@@ -158,6 +161,7 @@ class Main extends Component {
                   </div>
                 </Paper>
               </Grid>
+
               <Grid item xs={12} md={4}>
                 <Paper className={classes.paper}>
                   <div className={classes.box}>
@@ -178,6 +182,7 @@ class Main extends Component {
                   </div>
                 </Paper>
               </Grid>
+
               <Grid container item xs={12}>
                   <Grid item xs={12}>
                     <Paper className={classes.paper}>
@@ -199,6 +204,7 @@ class Main extends Component {
                     </Paper>
                 </Grid>
               </Grid>
+
             </Grid>
           </Grid>
           <SwipeDialog

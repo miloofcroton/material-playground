@@ -20,12 +20,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import DoneIcon from '@material-ui/icons/Done';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Fade from '@material-ui/core/Fade';
-import Back from './common/Back';
 
-const backgroundShape = require('../../assets/images/shape.svg');
-
-const logo = require('../../assets/images/logo.svg');
-
+import Back from '../../lib/common/Back';
+const backgroundShape = require('../../../assets/images/shape.svg');
+const logo = require('../../../assets/images/logo.svg');
 const numeral = require('numeral');
 numeral.defaultFormat('0');
 
