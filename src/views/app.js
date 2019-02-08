@@ -10,6 +10,7 @@ import Header from './layout/header';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import muiTheme from './layout/theme/mui'
+import GlobalStyle from './layout/theme/style';
 
 import ScrollToTop from './lib/ScrollTop'
 
@@ -22,6 +23,7 @@ const App = () => {
       <Router history={history}>
         <Fragment>
           <CssBaseline />
+          <GlobalStyle />
           <Head/>
           <Header/>
           <ScrollToTop>
