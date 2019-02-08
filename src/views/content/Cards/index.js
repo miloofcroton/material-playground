@@ -7,9 +7,9 @@ import SectionHeader from '../../lib/text/SectionHeader';
 
 const backgroundShape = require('../../../assets/images/shape.svg');
 
-const RootDiv = styled('div')({
+const RootDiv = styled('div')(theme => ({
   flexGrow: 1,
-  // backgroundColor: theme.palette.grey['A500'],
+  backgroundColor: theme.palette.grey['A500'],
   overflow: 'hidden',
   background: `url(${backgroundShape}) no-repeat`,
   backgroundSize: 'cover',
@@ -17,13 +17,13 @@ const RootDiv = styled('div')({
   marginTop: 20,
   padding: 20,
   paddingBottom: 200
-});
+}));
 
 const StyledGrid = styled(Grid)({
   width: 1000
 });
 
-const Cards = ({ classes }) => {
+const Cards = () => {
 
   return (
     <RootDiv>
