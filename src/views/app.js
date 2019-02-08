@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
-import { HashRouter, Switch } from 'react-router-dom'
+import { Router, Switch } from 'react-router-dom'
 import Switches from './layout/switches'
 
 import Head from './layout/head';
@@ -10,12 +10,15 @@ import muiTheme from './layout/theme/mui'
 
 import ScrollToTop from './lib/ScrollTop'
 
+import createHistory from 'history/createBrowserHistory';
+export const history = createHistory();
+
 class App extends Component {
   render() {
     return (
       <div>
         <MuiThemeProvider theme={muiTheme}>
-          <HashRouter>
+          <Router history={history}>
             <Fragment>
               <Head/>
               <ScrollToTop>
@@ -24,7 +27,7 @@ class App extends Component {
                 </Switch>
               </ScrollToTop>
             </Fragment>
-          </HashRouter>
+          </Router>
         </MuiThemeProvider>
       </div>
     );

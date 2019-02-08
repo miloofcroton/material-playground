@@ -1,7 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { blue, indigo } from '@material-ui/core/colors'
 
-
 const muiTheme = createMuiTheme({
   palette: {
     secondary: {
@@ -19,6 +18,5 @@ const muiTheme = createMuiTheme({
     ].join(',')
   }
 });
-
 
 export default muiTheme;
