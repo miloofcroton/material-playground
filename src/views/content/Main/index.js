@@ -126,10 +126,10 @@ class Main extends Component {
                 <Paper className={classes.paper}>
                   <div className={classes.box}>
                     <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
-                      First title
+                      About Us
                     </Typography>
                     <Typography variant="body1" gutterBottom>
-                      A first title style <br/> with two lines
+                      Our company is <br/> proud of our history
                     </Typography>
                   </div>
                   <div style={{display: 'flex', justifyContent: 'flex-end'}}>
@@ -144,10 +144,10 @@ class Main extends Component {
                 <Paper className={classes.paper}>
                   <div className={classes.box}>
                     <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
-                      Another box
+                      Our Latest Offering
                     </Typography>
                     <Typography variant="body1" gutterBottom>
-                      A default box
+                      Check it out!
                     </Typography>
                   </div>
                   <div style={{display: 'flex', justifyContent: 'flex-end'}}>
@@ -162,18 +162,18 @@ class Main extends Component {
                 <Paper className={classes.paper}>
                   <div className={classes.box}>
                     <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
-                      A box with a carousel
+                      Our Blog
                     </Typography>
                     <Typography variant="body1" gutterBottom>
-                      If you click in Getting Started, you will see a nice carousel
+                      See where we've been, or get going!
                     </Typography>
                   </div>
                   <div className={classes.alignRight}>
                     <Button onClick={this.openDialog}  variant="outlined" className={classes.actionButtom}>
-                      Learn more
+                      Image Gallery
                     </Button>
                     <Button onClick={this.openGetStartedDialog} color='primary' variant="contained" className={classes.actionButtom}>
-                      Dashboard
+                      Get Started
                     </Button>
                   </div>
                 </Paper>
