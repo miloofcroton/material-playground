@@ -16,7 +16,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-import Back from '../../lib/common/Back'
+import Back from '../../lib/navigation/Back'
 const qs = require('query-string');
 const backgroundShape = require('../../../assets/images/shape.svg');
 const numeral = require('numeral');

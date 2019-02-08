@@ -10,7 +10,7 @@ const styles = theme => ({
   },
   title: {
     fontWeight: 'bold'
-  }
+  },
 });
 
 class SectionHeader extends Component {
