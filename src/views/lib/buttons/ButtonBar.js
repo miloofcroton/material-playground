@@ -1,42 +1,33 @@
-import React, { Component } from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
+import React from 'react';
+import { styled } from '@material-ui/styles';
+import muiTheme from '../../layout/theme/mui';
 import Button from '@material-ui/core/Button';
 
-const styles = theme => ({
-  primary: {
-    marginRight: theme.spacing.unit * 2
-  },
-  secondary: {
-    background: theme.palette.secondary['100'],
-    color: 'white'
-  },
-  spaceTop: {
-    marginTop: 20
-  }
-})
+const Primary = styled(Button)(({ theme }) => ({
+  marginRight: theme.spacing.unit * 2
+}), { defaultTheme: muiTheme });
 
-class ButtonBar extends Component {
+const Secondary = styled(Button)(({ theme }) => ({
+  marginRight: theme.spacing.unit * 2
+}), { defaultTheme: muiTheme });
 
-  render() {
-    const { classes } = this.props;
+const SpaceTop = styled('div')({
+  marginTop: 20
+});
 
-    return (
-      <div className={classes.spaceTop}>
-        <Button
-          className={classes.primary}
-        >
-          Delete
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.secondary}
-        >
-          Edit
-        </Button>
-      </div>
-    )
-  }
+const ButtonBar = () => {
+
+  return (
+    <SpaceTop>
+      <Primary>Delete</Primary>
+      <Secondary
+        variant="contained"
+        color="primary"
+      >
+        Edit
+      </Secondary>
+    </SpaceTop>
+  );
 }
 
-export default withStyles(styles)(ButtonBar);
+export default ButtonBar;

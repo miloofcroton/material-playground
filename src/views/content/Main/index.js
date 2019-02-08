@@ -170,10 +170,10 @@ class Main extends Component {
                   </div>
                   <div className={classes.alignRight}>
                     <Button onClick={this.openDialog}  variant="outlined" className={classes.actionButtom}>
-                      Image Gallery
+                      Gallery
                     </Button>
                     <Button onClick={this.openGetStartedDialog} color='primary' variant="contained" className={classes.actionButtom}>
-                      Get Started
+                      Started
                     </Button>
                   </div>
                 </Paper>

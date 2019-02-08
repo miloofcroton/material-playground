@@ -6,8 +6,8 @@ import XAxis from 'recharts/lib/cartesian/XAxis';
 import Tooltip from 'recharts/lib/component/Tooltip';
 import { withTheme } from '@material-ui/core/styles';
 
-function SimpleLineChart(props) {
-  const { theme, data } = props;
+const SimpleLineChart = ({ theme, data }) => {
+
   return (
     <ResponsiveContainer width="99%" height={225}>
       <BarChart data={data}>
@@ -18,6 +18,6 @@ function SimpleLineChart(props) {
       </BarChart>
     </ResponsiveContainer>
   );
-}
+};
 
 export default withTheme()(SimpleLineChart);
