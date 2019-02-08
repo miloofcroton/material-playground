@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import CardItem from './cards/CardItem';
 import Topbar from './Topbar';
 import SectionHeader from './typo/SectionHeader';
-const backgroundShape = require('../images/shape.svg');
+const backgroundShape = require('../../assets/images/shape.svg');
 
 const styles = theme => ({
   root: {
@@ -35,7 +35,7 @@ class Cards extends Component {
         <CssBaseline />
         <Topbar currentPath={currentPath} />
         <div className={classes.root}>
-          <Grid container justify="center"> 
+          <Grid container justify="center">
             <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
               <Grid item xs={12}>
                 <SectionHeader title="Cards" subtitle="One page with a list of a collection" />

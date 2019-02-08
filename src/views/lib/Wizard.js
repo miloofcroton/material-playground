@@ -19,7 +19,7 @@ import Select from '@material-ui/core/Select';
 import Back from './common/Back'
 
 const qs = require('query-string');
-const backgroundShape = require('../images/shape.svg');
+const backgroundShape = require('../../assets/images/shape.svg');
 
 const numeral = require('numeral');
 numeral.defaultFormat('0,000');
@@ -113,7 +113,7 @@ class Wizard extends Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   handleNext = () => {
@@ -157,7 +157,7 @@ class Wizard extends Component {
 
   goToDashboard = event => {
     const queryString = this.props.location.search
-    
+
     this.props.history.push({
       pathname: '/dashboard',
       search: queryString
@@ -176,7 +176,7 @@ class Wizard extends Component {
       <React.Fragment>
         <CssBaseline />
         <div className={classes.root}>
-          <Grid container justify="center"> 
+          <Grid container justify="center">
             <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
               <Grid item xs={12}>
                 <Back />
@@ -483,7 +483,7 @@ PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or 
                         Back
                       </Button>
                     )}
-                    <Button 
+                    <Button
                       variant="contained"
                       color="primary"
                       onClick={activeStep !== 5 ? this.handleNext : this.goToDashboard}

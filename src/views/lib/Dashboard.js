@@ -18,7 +18,7 @@ import Topbar from './Topbar';
 const numeral = require('numeral');
 numeral.defaultFormat('0,000');
 
-const backgroundShape = require('../images/shape.svg');
+const backgroundShape = require('../../assets/images/shape.svg');
 
 const styles = theme => ({
   root: {
@@ -174,7 +174,7 @@ class Dashboard extends Component {
         <CssBaseline />
         <Topbar currentPath={currentPath} />
         <div className={classes.root}>
-          <Grid container justify="center"> 
+          <Grid container justify="center">
             <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
               <Grid item xs={12}>
                 <div className={classes.topBar}>
@@ -223,7 +223,7 @@ class Dashboard extends Component {
                       <div>
                         <Typography variant="subtitle2">
                           150,000 USD
-                        </Typography> 
+                        </Typography>
                       </div>
                     </div>
                   </div>
@@ -261,7 +261,7 @@ class Dashboard extends Component {
                       <div>
                         <Typography variant="subtitle2">
                           6 months
-                        </Typography> 
+                        </Typography>
                       </div>
                     </div>
                   </div>
@@ -299,7 +299,7 @@ class Dashboard extends Component {
                       <div>
                         <Typography variant="subtitle2">
                           May 2019
-                        </Typography> 
+                        </Typography>
                       </div>
                     </div>
                   </div>

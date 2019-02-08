@@ -22,9 +22,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Fade from '@material-ui/core/Fade';
 import Back from './common/Back';
 
-const backgroundShape = require('../images/shape.svg');
+const backgroundShape = require('../../assets/images/shape.svg');
 
-const logo = require('../images/logo.svg');
+const logo = require('../../assets/images/logo.svg');
 
 const numeral = require('numeral');
 numeral.defaultFormat('0');
@@ -118,7 +118,7 @@ class Signup extends Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   handleNext = () => {
@@ -174,7 +174,7 @@ class Signup extends Component {
         <CssBaseline />
         <div className={classes.root}>
           <Back />
-          <Grid container justify="center"> 
+          <Grid container justify="center">
             <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
               <Grid item xs={12}>
                 <div className={classes.logo}>
@@ -335,7 +335,7 @@ class Signup extends Component {
                          Cancel
                        </Button>
                      )}
-                     <Button 
+                     <Button
                        variant="contained"
                        color="primary"
                        onClick={this.handleNext}
@@ -345,9 +345,9 @@ class Signup extends Component {
                      >
                        {this.stepActions()}
                      </Button>
-                   </div> 
+                   </div>
                   )}
-                  
+
                 </div>
               </Grid>
             </Grid>
