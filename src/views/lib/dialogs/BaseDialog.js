@@ -14,6 +14,12 @@ const styles = theme => ({
     flexDirection: 'column',
     justifyContent: 'center'
   },
+  stepsContainer: {
+    marginLeft: 72,
+    textAlign: 'left',
+    marginTop: 20,
+    height: 65
+  },
   bottomMargin: {
     marginBottom: theme.spacing.unit * 2
   }

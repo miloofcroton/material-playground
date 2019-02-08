@@ -1,7 +1,6 @@
 import React,  { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { withRouter, Link } from 'react-router-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -13,7 +12,6 @@ import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import SimpleLineChart from '../../lib/SimpleLineChart';
 import Months from '../../lib/common/Months';
 import Loading from '../../lib/common/Loading';
-import Topbar from '../../lib/Topbar';
 const numeral = require('numeral');
 numeral.defaultFormat('0,000');
 const backgroundShape = require('../../../assets/images/shape.svg');
@@ -165,12 +163,10 @@ class Dashboard extends Component {
     const { classes } = this.props;
     const { amount, period, start, monthlyPayment,
       monthlyInterest, data, loading } = this.state;
-    const currentPath = this.props.location.pathname
+    // const currentPath = this.props.location.pathname
 
     return (
       <React.Fragment>
-        <CssBaseline />
-        <Topbar currentPath={currentPath} />
         <div className={classes.root}>
           <Grid container justify="center">
             <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
@@ -303,7 +299,7 @@ class Dashboard extends Component {
                   </div>
                 </Paper>
               </Grid>
-              <Grid container spacing={24} xs={12} justify="center">
+              <Grid container item spacing={24} xs={12} justify="center">
                 <Grid item xs={12} md={8} >
                   <Paper className={classes.paper} style={{position: 'relative'}}>
                     <Loading loading={loading} />
@@ -349,7 +345,7 @@ class Dashboard extends Component {
                     </Typography>
                     <div className={classes.mainBadge}>
                       <VerifiedUserIcon style={{fontSize: 72}} fontSize={'large'} color={'secondary'} />
-                      <Typography variant="headline" color={'secondary'} gutterBottom>
+                      <Typography variant="h5" color={'secondary'} gutterBottom>
                         Verified
                       </Typography>
                     </div>

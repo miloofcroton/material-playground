@@ -1,7 +1,6 @@
 import React,  { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { withRouter } from 'react-router-dom'
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -169,7 +168,6 @@ class Signup extends Component {
 
     return (
       <React.Fragment>
-        <CssBaseline />
         <div className={classes.root}>
           <Back />
           <Grid container justify="center">

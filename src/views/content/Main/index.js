@@ -1,7 +1,6 @@
 import React,  { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { withRouter } from 'react-router-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -9,7 +8,6 @@ import Button from '@material-ui/core/Button';
 
 import InstructionDialog from '../../lib/dialogs/InstructionDialog';
 import SwipeDialog from '../../lib/dialogs/SwipeDialog';
-import Topbar from '../../lib/Topbar';
 const backgroundShape = require('../../../assets/images/shape.svg');
 
 const styles = theme => ({
@@ -118,8 +116,6 @@ class Main extends Component {
     const { classes } = this.props;
     return (
       <React.Fragment>
-        <CssBaseline />
-        <Topbar />
         <div className={classes.root}>
 
           <Grid container justify="center">

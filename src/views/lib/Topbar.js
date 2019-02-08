@@ -93,6 +93,7 @@ class Topbar extends Component {
 
   componentDidMount() {
     window.scrollTo(0, 0);
+    console.log(this.props);
   }
 
   current = () => {
@@ -116,6 +117,7 @@ class Topbar extends Component {
 
   render() {
 
+    console.log(this.props);
     const { classes } = this.props;
 
     return (
@@ -139,16 +141,32 @@ class Topbar extends Component {
                         </Typography>
                       </div>
                       <div className={classes.iconContainer}>
-                        <IconButton onClick={this.mobileMenuOpen} className={classes.iconButton} color="inherit" aria-label="Menu">
+                        <IconButton
+                          onClick={this.mobileMenuOpen}
+                          className={classes.iconButton}
+                          color="inherit"
+                          aria-label="Menu"
+                        >
                           <MenuIcon />
                         </IconButton>
                       </div>
                       <div className={classes.tabContainer}>
-                        <SwipeableDrawer anchor="right" open={this.state.menuDrawer} onClose={this.mobileMenuClose} >
+                        <SwipeableDrawer
+                          anchor="right"
+                          open={this.state.menuDrawer}
+                          onClose={this.mobileMenuClose}
+                        >
                           <AppBar title="Menu" />
                           <List>
                             {Menu.map((item, index) => (
-                              <ListItem component={Link} to={{pathname: item.pathname, search: this.props.location.search}} button key={item.index}>
+                              <ListItem
+                                button
+                                key={index}
+                                component={Link}
+                                to={{
+                                  pathname: item.pathname,
+                                  search: this.props.location.search}}
+                              >
                                 <ListItemText primary={item.label} />
                               </ListItem>
                             ))}
@@ -161,7 +179,16 @@ class Topbar extends Component {
                           onChange={this.handleChange}
                         >
                           {Menu.map((item, index) => (
-                            <Tab key={index} component={Link} to={{pathname: item.pathname, search: this.props.location.search}} classes={{root: classes.tabItem}} label={item.label} />
+                            <Tab
+                              key={index}
+                              component={Link}
+                              to={{
+                                pathname: item.pathname,
+                                search: this.props.location.search
+                              }}
+                              classes={{root: classes.tabItem}}
+                              label={item.label}
+                            />
                           ))}
                         </Tabs>
                       </div>
