@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
+import { styled } from '@material-ui/styles';
+
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Avatar from '@material-ui/core/Avatar';
 import DescriptionIcon from '@material-ui/icons/Description';
 import ButtonBar from '../../lib/buttons/ButtonBar';
+
+const RootDiv = styled('div')({
+  flexGrow: 1,
+  // backgroundColor: theme.palette.grey['A500'],
+  overflow: 'hidden',
+  // background: `url(${backgroundShape}) no-repeat`,
+  backgroundSize: 'cover',
+  backgroundPosition: '0 400px',
+  marginTop: 20,
+  padding: 20,
+  paddingBottom: 200
+});
+
 
 const styles = theme => ({
   paper: {
@@ -76,7 +91,7 @@ class CardItem extends Component {
     const { classes } = this.props;
 
     return (
-      <div className={classes.root}>
+      <RootDiv>
         <Paper className={classes.paper}>
           <div className={classes.itemContainer}>
             <div className={classes.avatarContainer}>
@@ -121,7 +136,7 @@ class CardItem extends Component {
             </div>
           </div>
         </Paper>
-      </div>
+      </RootDiv>
     )
   }
 }
