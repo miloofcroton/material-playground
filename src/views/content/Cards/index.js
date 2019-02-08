@@ -1,18 +1,18 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { styled } from '@material-ui/styles';
+import { styled, ThemeProvider } from '@material-ui/styles';
 
 import CardItem from './CardItem';
 import SectionHeader from '../../lib/text/SectionHeader';
 
 import Button from "@material-ui/core/Button";
-
+import muiTheme from '../../layout/theme/mui';
 
 const backgroundShape = require('../../../assets/images/shape.svg');
 
-const RootDiv = styled('div')({
+const RootDiv = styled('div')(({ theme }) => ({
   flexGrow: 1,
-  // backgroundColor: theme.palette.grey['A500'],
+  backgroundColor: theme.palette.grey['A500'],
   overflow: 'hidden',
   background: `url(${backgroundShape}) no-repeat`,
   backgroundSize: 'cover',
@@ -20,19 +20,11 @@ const RootDiv = styled('div')({
   marginTop: 20,
   padding: 20,
   paddingBottom: 200,
-},{
-  withTheme: true
-});
+}), { defaultTheme: muiTheme });
 
 const StyledGrid = styled(Grid)({
   width: 1000
 });
-
-
-const StyledButton = styled(Button)(() => ({
-  backgroundColor: 'black'
-}));
-
 
 const Cards = () => {
 
@@ -45,7 +37,6 @@ const Cards = () => {
               title="Cards"
               subtitle="One page with a list of a collection" />
             <CardItem />
-            <StyledButton>sdf</StyledButton>
           </Grid>
         </StyledGrid>
       </Grid>
