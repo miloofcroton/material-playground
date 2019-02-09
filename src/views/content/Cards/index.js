@@ -32,7 +32,8 @@ const Cards = () => {
           <Grid item xs={12}>
             <SectionHeader
               title="Cards"
-              subtitle="One page with a list of a collection" />
+              subtitle="One page with a list of a collection"
+            />
             <CardItem />
           </Grid>
         </StyledGrid>
