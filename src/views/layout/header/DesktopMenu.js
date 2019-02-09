@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { Tabs, Tab } from '@material-ui/core';
 import Menu from '../../routes/menu';
 
-const DesktopMenu = ({ value, handleChange, location, current }) => {
+const DesktopMenu = ({ value, handleChange, current, location }) => {
 
   return (
     <Tabs

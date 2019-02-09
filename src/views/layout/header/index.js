@@ -147,7 +147,6 @@ class Header extends Component {
                       mobileMenuClose={this.mobileMenuClose}
                       mobileMenuOpen={this.mobileMenuOpen}
                       menuDrawer={this.state.menuDrawer}
-                      current={this.current}
                     />
 
                     <DesktopMenu
