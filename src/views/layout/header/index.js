@@ -109,60 +109,69 @@ class Header extends Component {
   render() {
 
     return (
-      <RootAppBar position="absolute" color="default">
-        <Toolbar>
-          <Grid container spacing={24} alignItems="baseline">
+      <Fragment>
+        {
+          this.props.location.pathname !== '/signup'
+          && this.props.location.pathname !== '/wizard'
+          && (
+            <RootAppBar position="absolute" color="default">
+              <Toolbar>
+                <Grid container spacing={24} alignItems="baseline">
 
-            <GridFlex item container xs={12} alignItems='baseline'>
+                  <GridFlex item container xs={12} alignItems='baseline'>
 
-              <InlineDiv>
-                <Typography variant="h6" color="inherit" noWrap>
-                  <StyledLink to='/'>
-                    <img width={20} src={logo} alt="logo" />
-                    <Tagline>React Starter</Tagline>
-                  </StyledLink>
-                </Typography>
-              </InlineDiv>
-              {!this.props.noTabs && (
-                <Fragment>
-                  <ProductLogo>
-                    <Typography>
-                      React/Apollo Boilerplate
-                  </Typography>
-                  </ProductLogo>
+                    <InlineDiv>
+                      <Typography variant="h6" color="inherit" noWrap>
+                        <StyledLink to='/'>
+                          <img width={20} src={logo} alt="logo" />
+                          <Tagline>React Starter</Tagline>
+                        </StyledLink>
+                      </Typography>
+                    </InlineDiv>
+                    {!this.props.noTabs && (
+                      <Fragment>
+                        <ProductLogo>
+                          <Typography>
+                            React/Apollo Boilerplate
+                    </Typography>
+                        </ProductLogo>
 
-                  <IconContainer>
-                    <StyledIconButton
-                      onClick={this.mobileMenuOpen}
-                      color="inherit"
-                      aria-label="Menu"
-                    >
-                      <MenuIcon />
-                    </StyledIconButton>
-                  </IconContainer>
+                        <IconContainer>
+                          <StyledIconButton
+                            onClick={this.mobileMenuOpen}
+                            color="inherit"
+                            aria-label="Menu"
+                          >
+                            <MenuIcon />
+                          </StyledIconButton>
+                        </IconContainer>
 
-                  <TabContainer>
+                        <TabContainer>
 
-                    <MobileMenu
-                      mobileMenuClose={this.mobileMenuClose}
-                      mobileMenuOpen={this.mobileMenuOpen}
-                      menuDrawer={this.state.menuDrawer}
-                    />
+                          <MobileMenu
+                            mobileMenuClose={this.mobileMenuClose}
+                            mobileMenuOpen={this.mobileMenuOpen}
+                            menuDrawer={this.state.menuDrawer}
+                          />
 
-                    <DesktopMenu
-                      value={this.state.value}
-                      handleChange={this.handleChange}
-                      current={this.current}
-                    />
+                          <DesktopMenu
+                            value={this.state.value}
+                            handleChange={this.handleChange}
+                            current={this.current}
+                          />
 
-                  </TabContainer>
+                        </TabContainer>
 
-                </Fragment>
-              )}
-            </GridFlex>
-          </Grid>
-        </Toolbar>
-      </RootAppBar>
+                      </Fragment>
+                    )}
+                  </GridFlex>
+                </Grid>
+              </Toolbar>
+            </RootAppBar>
+          )
+        }
+
+      </Fragment>
     )
   }
 }
