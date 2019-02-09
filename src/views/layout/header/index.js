@@ -1,78 +1,80 @@
-import React,  { Component } from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
+import React,  { Fragment, Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Toolbar from '@material-ui/core/Toolbar';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import MenuIcon from '@material-ui/icons/Menu';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import { styled, withTheme } from '@material-ui/styles';
+import {
+  Grid,
+  Typography,
+  Toolbar,
+  AppBar,
+  Tabs,
+  Tab,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  SwipeableDrawer,
+} from '@material-ui/core';
+import { Menu as MenuIcon } from '@material-ui/icons';
 
 import Menu from '../../routes/menu';
 const logo = require('../../../assets/images/logo.svg');
 
-const styles = theme => ({
-  appBar: {
-    position: 'relative',
-    boxShadow: 'none',
-    borderBottom: `1px solid ${theme.palette.grey['100']}`,
-    backgroundColor: 'white',
+const RootAppBar = styled('div')(({ theme }) => ({
+  position: 'relative',
+  boxShadow: 'none',
+  borderBottom: `1px solid ${theme.palette.grey['100']}`,
+  backgroundColor: 'white',
+}));
 
-  },
-  inline: {
-    display: 'inline'
-  },
-  flex: {
+const GridFlex = styled(Grid)(({ theme }) => ({
+  display: 'flex',
+  [theme.breakpoints.down('sm')]: {
     display: 'flex',
-    [theme.breakpoints.down('sm')]: {
-      display: 'flex',
-      justifyContent: 'space-evenly',
-      alignItems: 'center'
-    }
-  },
-  link: {
-    textDecoration: 'none',
-    color: 'inherit'
-  },
-  productLogo: {
-    display: 'inline-block',
-    borderLeft: `1px solid ${theme.palette.grey['A100']}`,
-    marginLeft: 32,
-    paddingLeft: 24
-  },
-  tagline: {
-    display: 'inline-block',
-    marginLeft: 10
-  },
-  iconContainer: {
-    display: 'none',
-    [theme.breakpoints.down('sm')]: {
-      display: 'block'
-    }
-  },
-  iconButton: {
-    float: 'right'
-  },
-  tabContainer: {
-    marginLeft: 32,
-    [theme.breakpoints.down('sm')]: {
-      display: 'none'
-    }
-  },
-  tabItem: {
-    paddingTop: 20,
-    paddingBottom: 20,
-    minWidth: 'auto'
+    justifyContent: 'space-evenly',
+    alignItems: 'center'
   }
-})
+}));
 
-class Topbar extends Component {
+const InlineDiv = styled('div')({
+  display: 'inline'
+});
+
+const StyledLink = styled(Link)({
+  textDecoration: 'none',
+  color: 'inherit'
+});
+
+const ProductLogo = styled('div')(({ theme }) => ({
+  display: 'inline-block',
+  borderLeft: `1px solid ${theme.palette.grey['A100']}`,
+  marginLeft: 32,
+  paddingLeft: 24
+}));
+
+const Tagline = styled('span')({
+  display: 'inline-block',
+  marginLeft: 10
+});
+
+const IconContainer = styled('div')(({ theme }) => ({
+  display: 'none',
+  [theme.breakpoints.down('sm')]: {
+    display: 'block'
+  }
+}));
+
+const StyledIconButton = styled(IconButton)({
+  float: 'right'
+});
+
+const TabContainer = styled('div')(({ theme }) => ({
+  marginLeft: 32,
+  [theme.breakpoints.down('sm')]: {
+    display: 'none'
+  }
+}));
+
+class Header extends Component {
 
   state = {
     value: 0,
@@ -116,41 +118,38 @@ class Topbar extends Component {
 
   render() {
 
-    const { classes } = this.props;
-
     return (
-      <AppBar position="absolute" color="default" className={classes.appBar}>
+      <RootAppBar position="absolute" color="default">
         <Toolbar>
           <Grid container spacing={24} alignItems="baseline">
 
-            <Grid item container xs={12} alignItems='baseline' className={classes.flex}>
+            <GridFlex item container xs={12} alignItems='baseline'>
 
-              <div className={classes.inline}>
+              <InlineDiv>
                 <Typography variant="h6" color="inherit" noWrap>
-                  <Link to='/' className={classes.link}>
+                  <StyledLink to='/'>
                     <img width={20} src={logo} alt="logo" />
-                    <span className={classes.tagline}>React Starter</span>
-                  </Link>
+                    <Tagline>React Starter</Tagline>
+                  </StyledLink>
                 </Typography>
-              </div>
+              </InlineDiv>
               {!this.props.noTabs && (
-                <React.Fragment>
-                  <div className={classes.productLogo}>
+                <Fragment>
+                  <ProductLogo>
                     <Typography>
                       React/Apollo Boilerplate
-                        </Typography>
-                  </div>
-                  <div className={classes.iconContainer}>
-                    <IconButton
+                    </Typography>
+                  </ProductLogo>
+                  <IconContainer>
+                    <StyledIconButton
                       onClick={this.mobileMenuOpen}
-                      className={classes.iconButton}
                       color="inherit"
                       aria-label="Menu"
                     >
                       <MenuIcon />
-                    </IconButton>
-                  </div>
-                  <div className={classes.tabContainer}>
+                    </StyledIconButton>
+                  </IconContainer>
+                  <TabContainer>
                     <SwipeableDrawer
                       anchor="right"
                       open={this.state.menuDrawer}
@@ -188,20 +187,24 @@ class Topbar extends Component {
                             pathname: item.pathname,
                             search: this.props.location.search
                           }}
-                          classes={{ root: classes.tabItem }}
+                          style={{
+                            paddingTop: 20,
+                            paddingBottom: 20,
+                            minWidth: 'auto'
+                          }}
                           label={item.label}
                         />
                       ))}
                     </Tabs>
-                  </div>
-                </React.Fragment>
+                  </TabContainer>
+                </Fragment>
               )}
-            </Grid>
+            </GridFlex>
           </Grid>
         </Toolbar>
-      </AppBar>
+      </RootAppBar>
     )
   }
 }
 
-export default withRouter(withStyles(styles)(Topbar))
+export default withRouter(withTheme()(Header));
