@@ -94,13 +94,13 @@ class Header extends Component {
     if(this.props.location.pathname === '/dashboard') {
       return 1
     }
-    if(this.props.location.pathname === '/signup') {
+    if (this.props.location.pathname === '/items') {
       return 2
     }
-    if(this.props.location.pathname === '/wizard') {
+    if(this.props.location.pathname === '/signup') {
       return 3
     }
-    if(this.props.location.pathname === '/cards') {
+    if(this.props.location.pathname === '/wizard') {
       return 4
     }
 

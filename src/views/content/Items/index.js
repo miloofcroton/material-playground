@@ -52,8 +52,8 @@ const Items = () => {
         <StyledGrid spacing={24} alignItems="center" justify="center" container>
           <Grid item xs={12}>
             <SectionHeader
-              title="Cards"
-              subtitle="One page with a list of a collection"
+              title="Items"
+              subtitle="One page with a list of items"
             />
 
             {fakeData.map((item, index) => (
