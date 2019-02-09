@@ -292,7 +292,7 @@ class Dashboard extends Component {
               </StyledPaper>
             </Grid>
 
-            <Grid container item spacing={24} xs={12} justify="center">
+            <Grid container spacing={24} xs={12} justify="center">
               <Grid item xs={12} md={8} >
                 <StyledPaperRelative>
                   <Waiting loading={loading} />
