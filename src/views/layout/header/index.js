@@ -1,22 +1,12 @@
 import React,  { Fragment, Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { styled, withTheme } from '@material-ui/styles';
-import {
-  Grid,
-  Typography,
-  Toolbar,
-  AppBar,
-  Tabs,
-  Tab,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  SwipeableDrawer,
-} from '@material-ui/core';
+import { Grid, Typography, Toolbar, IconButton } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
 
-import Menu from '../../routes/menu';
+import MobileMenu from './MobileMenu'
+import DesktopMenu from './DesktopMenu'
+
 const logo = require('../../../assets/images/logo.svg');
 
 const RootAppBar = styled('div')(({ theme }) => ({
@@ -138,8 +128,9 @@ class Header extends Component {
                   <ProductLogo>
                     <Typography>
                       React/Apollo Boilerplate
-                    </Typography>
+                  </Typography>
                   </ProductLogo>
+
                   <IconContainer>
                     <StyledIconButton
                       onClick={this.mobileMenuOpen}
@@ -149,54 +140,24 @@ class Header extends Component {
                       <MenuIcon />
                     </StyledIconButton>
                   </IconContainer>
+
                   <TabContainer>
-                    <SwipeableDrawer
-                      anchor="right"
-                      open={this.state.menuDrawer}
-                      onOpen={this.mobileMenuOpen}
-                      onClose={this.mobileMenuClose}
-                    >
-                      <AppBar title="Menu" />
-                      <List>
-                        {Menu.map((item, index) => (
-                          <ListItem
-                            button
-                            key={index}
-                            component={Link}
-                            to={{
-                              pathname: item.pathname,
-                              search: this.props.location.search
-                            }}
-                          >
-                            <ListItemText primary={item.label} />
-                          </ListItem>
-                        ))}
-                      </List>
-                    </SwipeableDrawer>
-                    <Tabs
-                      value={this.current() || this.state.value}
-                      indicatorColor="primary"
-                      textColor="primary"
-                      onChange={this.handleChange}
-                    >
-                      {Menu.map((item, index) => (
-                        <Tab
-                          key={index}
-                          component={Link}
-                          to={{
-                            pathname: item.pathname,
-                            search: this.props.location.search
-                          }}
-                          style={{
-                            paddingTop: 20,
-                            paddingBottom: 20,
-                            minWidth: 'auto'
-                          }}
-                          label={item.label}
-                        />
-                      ))}
-                    </Tabs>
+
+                    <MobileMenu
+                      mobileMenuClose={this.mobileMenuClose}
+                      mobileMenuOpen={this.mobileMenuOpen}
+                      menuDrawer={this.state.menuDrawer}
+                      current={this.current}
+                    />
+
+                    <DesktopMenu
+                      value={this.state.value}
+                      handleChange={this.handleChange}
+                      current={this.current}
+                    />
+
                   </TabContainer>
+
                 </Fragment>
               )}
             </GridFlex>
