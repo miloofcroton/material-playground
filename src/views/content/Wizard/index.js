@@ -18,8 +18,6 @@ import {
   Select,
 } from '@material-ui/core';
 
-import withStyles from '@material-ui/core/styles/withStyles';
-
 import Back from '../../lib/navigation/Back'
 const qs = require('query-string');
 const backgroundShape = require('../../../assets/images/shape.svg');
@@ -42,67 +40,57 @@ const StyledGrid = styled(Grid)(({ theme }) => ({
   margin: `0 ${theme.spacing.unit * 2}px`
 }));
 
-const SmallContainer = styled(Grid)({
+const SmallContainer = styled('div')({
   width: '60%'
 });
 
-const BigContainer = styled(Grid)({
+const BigContainer = styled('div')({
   width: '80%'
 });
 
-const StepContainer = styled(Grid)({
+const StepContainer = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center'
 });
 
-const styles = theme => ({
-  stepContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
-  },
-  stepGrid: {
-    width: '80%'
-  },
-  backButton: {
-    marginRight: theme.spacing.unit,
-  },
-  outlinedButtom: {
-    textTransform: 'uppercase',
-    margin: theme.spacing.unit
-  },
-  stepper: {
-    backgroundColor: 'transparent'
-  },
-  paper: {
-    padding: theme.spacing.unit * 3,
-    textAlign: 'left',
-    color: theme.palette.text.secondary
-  },
-  topInfo: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 42
-  },
-  formControl: {
-    width: '100%'
-  },
-  selectEmpty: {
-    marginTop: theme.spacing.unit * 2,
-  },
-  borderColumn: {
-    borderBottom: `1px solid ${theme.palette.grey['100']}`,
-    paddingBottom: 24,
-    marginBottom: 24
-  },
-  flexBar: {
-    marginTop: 32,
-    display: 'flex',
-    justifyContent: 'center'
-  }
-})
+const BoldTypography = styled(Typography)({
+  fontWeight: 'bold'
+});
+
+const TopInfo = styled('div')({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  marginBottom: 42
+});
+
+const StyledFormControl = styled(FormControl)({
+  width: '100%'
+});
+
+const FlexBar = styled('div')({
+  marginTop: 32,
+  display: 'flex',
+  justifyContent: 'center'
+});
+
+const OutlinedButton = styled(Button)(({ theme }) => ({
+  textTransform: 'uppercase',
+  margin: theme.spacing.unit
+}));
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing.unit * 3,
+  textAlign: 'left',
+  color: theme.palette.text.secondary
+}));
+
+const BorderColumn = styled('div')(({ theme }) => ({
+  borderBottom: `1px solid ${theme.palette.grey['100']}`,
+  paddingBottom: 24,
+  marginBottom: 24
+}));
 
 const getSteps = () => {
   return [
@@ -178,7 +166,7 @@ class Wizard extends Component {
 
   render() {
 
-    const { classes } = this.props;
+    const { theme } = this.props;
     const queryString = this.props.location.search
     const parsed = queryString ? qs.parse(queryString) : {}
     const steps = getSteps();
@@ -186,12 +174,16 @@ class Wizard extends Component {
 
     return (
       <DivRoot>
-        <StyledGrid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
+        <StyledGrid spacing={24} alignItems="center" justify="center" container>
           <Grid item xs={12}>
             <Back />
-            <StepContainer className={classes.stepContainer}>
+            <StepContainer>
               <BigContainer>
-                <Stepper classes={{root: classes.stepper}} activeStep={activeStep} alternativeLabel>
+                <Stepper
+                  style={{ backgroundColor: 'transparent' }}
+                  activeStep={activeStep}
+                  alternativeLabel
+                >
                   {steps.map(label => {
                     return (
                       <Step key={label}>
@@ -203,8 +195,8 @@ class Wizard extends Component {
               </BigContainer>
               { activeStep === 0 && (
               <BigContainer>
-                <Paper className={classes.paper}>
-                  <div className={classes.topInfo}>
+                <StyledPaper>
+                  <TopInfo>
                     <div>
                       <Typography variant="subtitle1" style={{fontWeight: 'bold'}} gutterBottom>
                         Information
@@ -214,11 +206,14 @@ class Wizard extends Component {
                       </Typography>
                     </div>
                     <div>
-                    <Button variant="outlined" size="large" className={classes.outlinedButtom}>
+                    <OutlinedButton
+                      variant="outlined"
+                      size="large"
+                    >
                       Edit
-                    </Button>
+                    </OutlinedButton>
                     </div>
-                  </div>
+                  </TopInfo>
                   <Grid item container xs={12}>
                     <Grid item xs={6}>
                       <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
@@ -237,12 +232,12 @@ class Wizard extends Component {
                       </Typography>
                     </Grid>
                   </Grid>
-                </Paper>
-                </BigContainer>
+                </StyledPaper>
+              </BigContainer>
               )}
               { activeStep === 1 && (
               <SmallContainer>
-                <Paper className={classes.paper}>
+                <StyledPaper>
                   <div>
                     <div style={{marginBottom: 32}}>
                       <Typography variant="subtitle1" style={{fontWeight: 'bold'}} gutterBottom>
@@ -264,7 +259,7 @@ class Wizard extends Component {
                       <Typography style={{textTransform: 'uppercase', marginBottom: 20}} color='secondary' gutterBottom>
                         Receiving account
                       </Typography>
-                      <FormControl variant="outlined" className={classes.formControl}>
+                      <StyledFormControl variant="outlined">
                         <Select
                           value={this.state.receivingAccount}
                           onChange={this.handleChange}
@@ -278,35 +273,41 @@ class Wizard extends Component {
                           <MenuItem value="">
                             <em></em>
                           </MenuItem>
-                          <MenuItem value={'0297 00988200918'}>First account</MenuItem>
-                          <MenuItem value={'0235 00235233332'}>Second account</MenuItem>
-                          <MenuItem value={'1256 00864222212'}>Third account</MenuItem>
+                          <MenuItem value={'0297 00988200918'}>
+                            First account
+                          </MenuItem>
+                          <MenuItem value={'0235 00235233332'}>
+                            Second account
+                          </MenuItem>
+                          <MenuItem value={'1256 00864222212'}>
+                            Third account
+                          </MenuItem>
                         </Select>
-                      </FormControl>
+                      </StyledFormControl>
                     </div>
                   </div>
-                </Paper>
+                </StyledPaper>
               </SmallContainer>
               )}
               { activeStep === 2 && (
               <BigContainer>
-                <Paper className={classes.paper}>
-                  <div className={classes.topInfo}>
+                <StyledPaper>
+                  <TopInfo>
                     <div>
-                      <Typography variant="subtitle1" style={{fontWeight: 'bold'}} gutterBottom>
+                      <BoldTypography variant="subtitle1" gutterBottom>
                         Details
-                      </Typography>
+                      </BoldTypography>
                       <Typography variant="body2" gutterBottom>
                         We need some details about any information
                       </Typography>
                     </div>
                     <div>
-                      <Button variant="outlined" size="large" className={classes.outlinedButtom}>
+                      <OutlinedButton variant="outlined" size="large">
                         Edit
-                      </Button>
+                      </OutlinedButton>
                     </div>
-                  </div>
-                  <div className={classes.borderColumn}>
+                  </TopInfo>
+                  <BorderColumn>
                     <Grid item container xs={12} style={{marginBottom: 32}}>
                       <Grid item xs={6}>
                         <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
@@ -343,7 +344,7 @@ class Wizard extends Component {
                         </Typography>
                       </Grid>
                     </Grid>
-                  </div>
+                  </BorderColumn>
                   <Grid item container xs={12}>
                     <Grid item container xs={12} style={{marginBottom: 32}}>
                       <Grid item xs={6}>
@@ -377,13 +378,13 @@ class Wizard extends Component {
                       <Typography style={{textTransform: 'uppercase', marginBottom: 20}} color='secondary' gutterBottom>
                         Destination account
                       </Typography>
-                      <FormControl variant="outlined" className={classes.formControl}>
+                      <StyledFormControl variant="outlined">
                         <Select
                           value={this.state.repaimentAccount}
                           onChange={this.handleChange}
                           input={
                             <OutlinedInput
-                              labelWidth={this.state.labelWidth}
+                              labelWidth={0}
                               name="repaimentAccount"
                             />
                           }
@@ -395,15 +396,15 @@ class Wizard extends Component {
                           <MenuItem value={'0235 00235233332'}>Account two</MenuItem>
                           <MenuItem value={'1256 00864222212'}>Other account</MenuItem>
                         </Select>
-                      </FormControl>
+                      </StyledFormControl>
                     </Grid>
                   </Grid>
-                </Paper>
-                </BigContainer>
+                </StyledPaper>
+              </BigContainer>
               )}
               { activeStep === 3 && (
                 <BigContainer>
-                  <Paper className={classes.paper}>
+                  <StyledPaper>
                     <div style={{marginBottom: 24}}>
                       <Typography variant="subtitle1" style={{fontWeight: 'bold'}} gutterBottom>
                         Terms & Conditions
@@ -443,12 +444,12 @@ PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or 
                         label="I have read and understood the terms & conditions"
                       />
                     </FormGroup>
-                  </Paper>
+                  </StyledPaper>
                 </BigContainer>
               )}
               { activeStep === 4 && (
               <SmallContainer>
-                <Paper className={classes.paper}>
+                <StyledPaper>
                   <Grid item container xs={12}>
                     <Grid item xs={12}>
                       <Typography variant="subtitle1" style={{fontWeight: 'bold'}} gutterBottom>
@@ -459,12 +460,12 @@ PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or 
                       </Typography>
                     </Grid>
                   </Grid>
-                </Paper>
+                </StyledPaper>
                 </SmallContainer>
               )}
               { (activeStep === 5 || activeStep === 6) && (
               <SmallContainer>
-                <Paper className={classes.paper}>
+                <StyledPaper>
                   <Grid item container xs={12}>
                     <Grid item xs={12}>
                       <Typography variant="subtitle1" gutterBottom>
@@ -478,16 +479,18 @@ PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or 
                       </Button>
                     </Grid>
                   </Grid>
-                </Paper>
-                </SmallContainer>
+                </StyledPaper>
+              </SmallContainer>
               )}
-              <div className={classes.flexBar}>
+              <FlexBar>
                 { activeStep !== 5 && (
                   <Button
-                  disabled={activeStep === 0}
-                  onClick={this.handleBack}
-                  className={classes.backButton}
-                  size='large'
+                    disabled={activeStep === 0}
+                    onClick={this.handleBack}
+                    style={{
+                      marginRight: theme.spacing.unit,
+                    }}
+                    size='large'
                   >
                     Back
                   </Button>
@@ -501,7 +504,7 @@ PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or 
                 >
                   {this.stepActions()}
                 </Button>
-              </div>
+              </FlexBar>
             </StepContainer>
           </Grid>
         </StyledGrid>
@@ -510,4 +513,4 @@ PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or 
   }
 }
 
-export default withRouter(withStyles(styles)(withTheme()(Wizard)));
+export default withRouter(withTheme()(Wizard));
