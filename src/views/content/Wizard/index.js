@@ -92,6 +92,15 @@ const BorderColumn = styled('div')(({ theme }) => ({
   marginBottom: 24
 }));
 
+const UpperTyp = styled(Typography)({
+  textTransform: 'uppercase'
+});
+
+const BoldTyp = styled(Typography)({
+  fontWeight: 'bold'
+});
+
+
 const getSteps = () => {
   return [
     'Info',
@@ -198,9 +207,9 @@ class Wizard extends Component {
                 <StyledPaper>
                   <TopInfo>
                     <div>
-                      <Typography variant="subtitle1" style={{fontWeight: 'bold'}} gutterBottom>
+                      <BoldTyp variant="subtitle1" gutterBottom>
                         Information
-                      </Typography>
+                      </BoldTyp>
                       <Typography variant="body2" gutterBottom>
                         General information about the service
                       </Typography>
@@ -216,17 +225,17 @@ class Wizard extends Component {
                   </TopInfo>
                   <Grid item container xs={12}>
                     <Grid item xs={6}>
-                      <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                      <UpperTyp color='secondary' gutterBottom>
                         User
-                      </Typography>
+                      </UpperTyp>
                       <Typography variant="h5" gutterBottom>
                         John Doe
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                      <UpperTyp color='secondary' gutterBottom>
                         City
-                      </Typography>
+                      </UpperTyp>
                       <Typography variant="h5" gutterBottom>
                         Tokyo
                       </Typography>
@@ -240,25 +249,25 @@ class Wizard extends Component {
                 <StyledPaper>
                   <div>
                     <div style={{marginBottom: 32}}>
-                      <Typography variant="subtitle1" style={{fontWeight: 'bold'}} gutterBottom>
+                      <BoldTyp variant="subtitle1" gutterBottom>
                         Bank information
-                      </Typography>
+                      </BoldTyp>
                       <Typography variant="body2" gutterBottom>
                         Select account to receive the money
                       </Typography>
                     </div>
                     <div style={{marginBottom: 32}}>
-                      <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                      <UpperTyp color='secondary' gutterBottom>
                         Bank
-                      </Typography>
+                      </UpperTyp>
                       <Typography variant="h5" gutterBottom>
                         N26
                       </Typography>
                     </div>
                     <div>
-                      <Typography style={{textTransform: 'uppercase', marginBottom: 20}} color='secondary' gutterBottom>
+                      <UpperTyp style={{ marginBottom: 20 }} color='secondary' gutterBottom>
                         Receiving account
-                      </Typography>
+                      </UpperTyp>
                       <StyledFormControl variant="outlined">
                         <Select
                           value={this.state.receivingAccount}
@@ -310,17 +319,17 @@ class Wizard extends Component {
                   <BorderColumn>
                     <Grid item container xs={12} style={{marginBottom: 32}}>
                       <Grid item xs={6}>
-                        <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                        <UpperTyp color='secondary' gutterBottom>
                           Amount
-                        </Typography>
+                        </UpperTyp>
                         <Typography variant="h5" gutterBottom>
                           { parsed ? numeral(parsed.amount).format() : '75,000'} DKK
                         </Typography>
                       </Grid>
                       <Grid item xs={6}>
-                        <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                        <UpperTyp color='secondary' gutterBottom>
                           Total fees
-                        </Typography>
+                        </UpperTyp>
                         <Typography variant="h5" gutterBottom>
                           0 DKK
                         </Typography>
@@ -328,17 +337,17 @@ class Wizard extends Component {
                     </Grid>
                     <Grid item container xs={12}>
                       <Grid item xs={6}>
-                        <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                        <UpperTyp color='secondary' gutterBottom>
                           Total price
-                        </Typography>
+                        </UpperTyp>
                         <Typography variant="h5" gutterBottom>
                           { parsed ? numeral(parsed.interest).format() : '6,600'} USD
                         </Typography>
                       </Grid>
                       <Grid item xs={6}>
-                        <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                        <UpperTyp color='secondary' gutterBottom>
                           Total cost
-                        </Typography>
+                        </UpperTyp>
                         <Typography variant="h5" gutterBottom>
                           { parsed ? numeral(parsed.cost).format() : '81,600'} USD
                         </Typography>
@@ -348,26 +357,26 @@ class Wizard extends Component {
                   <Grid item container xs={12}>
                     <Grid item container xs={12} style={{marginBottom: 32}}>
                       <Grid item xs={6}>
-                        <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                        <UpperTyp color='secondary' gutterBottom>
                           How often
-                        </Typography>
+                        </UpperTyp>
                         <Typography variant="h5" gutterBottom>
                           Once a month
                         </Typography>
                       </Grid>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                      <UpperTyp color='secondary' gutterBottom>
                         When to start
-                      </Typography>
+                      </UpperTyp>
                       <Typography variant="h5" gutterBottom>
                         01 February 2019
                       </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                      <UpperTyp color='secondary' gutterBottom>
                         When it ends?
-                      </Typography>
+                      </UpperTyp>
                       <Typography variant="h5" gutterBottom>
                         01 May 2019
                       </Typography>
@@ -406,25 +415,25 @@ class Wizard extends Component {
                 <BigContainer>
                   <StyledPaper>
                     <div style={{marginBottom: 24}}>
-                      <Typography variant="subtitle1" style={{fontWeight: 'bold'}} gutterBottom>
+                      <BoldTyp variant="subtitle1" gutterBottom>
                         Terms & Conditions
-                      </Typography>
+                      </BoldTyp>
                       <Typography variant="body2" gutterBottom>
                         Please read through and accept the terms & conditions
                       </Typography>
                     </div>
                     <div style={{ height: 330, padding: 16, border: '2px solid #ccc', borderRadius: '3px', overflowY: 'scroll' }}>
-                      <Typography variant="subtitle1" style={{fontWeight: 'bold'}} gutterBottom>
+                      <BoldTyp variant="subtitle1" gutterBottom>
                         1. Your agreement
-                      </Typography>
+                      </BoldTyp>
                       <Typography variant="body2" gutterBottom>
                       By using this Site, you agree to be bound by, and to comply with, these Terms and Conditions. If you do not agree to these Terms and Conditions, please do not use this site.
 
 PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or otherwise alter these Terms and Conditions at any time. Unless otherwise indicated, amendments will become effective immediately. Please review these Terms and Conditions periodically. Your continued use of the Site following the posting of changes and/or modifications will constitute your acceptance of the revised Terms and Conditions and the reasonableness of these standards for notice of changes. For your information, this page was last updated as of the date at the top of these terms and conditions.
                       </Typography>
-                      <Typography variant="subtitle1" style={{fontWeight: 'bold'}} gutterBottom>
+                      <BoldTyp variant="subtitle1" gutterBottom>
                         2. Privacy
-                      </Typography>
+                      </BoldTyp>
                       <Typography variant="body2" gutterBottom>
                         Please review our Privacy Policy, which also governs your visit to this Site, to understand our practices.
                         By using this Site, you agree to be bound by, and to comply with, these Terms and Conditions. If you do not agree to these Terms and Conditions, please do not use this site.
@@ -452,9 +461,9 @@ PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or 
                 <StyledPaper>
                   <Grid item container xs={12}>
                     <Grid item xs={12}>
-                      <Typography variant="subtitle1" style={{fontWeight: 'bold'}} gutterBottom>
+                      <BoldTyp variant="subtitle1" gutterBottom>
                         Sign & confirm
-                      </Typography>
+                      </BoldTyp>
                       <Typography variant="body2" gutterBottom>
                         Sign and confirm your agreement
                       </Typography>

@@ -61,6 +61,9 @@ const StepsContainer = styled('div')({
   height: 65
 });
 
+const UpperTyp = styled(Typography)({
+  textTransform: 'uppercase'
+});
 
 class SwipeDialog extends Component {
 
@@ -128,9 +131,9 @@ class SwipeDialog extends Component {
           </div>
 
           <StepsContainer>
-            <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+            <UpperTyp color='secondary' gutterBottom>
               {tutorialSteps[activeStep].label}
-            </Typography>
+            </UpperTyp>
             <Typography variant="body1" gutterBottom>
               {tutorialSteps[activeStep].description}
             </Typography>

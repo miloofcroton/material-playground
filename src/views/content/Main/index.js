@@ -47,6 +47,9 @@ const Box = styled('div')({
   height: 65
 });
 
+const UpperTyp = styled(Typography)({
+  textTransform: 'uppercase'
+});
 
 class Main extends Component {
 
@@ -82,45 +85,45 @@ class Main extends Component {
             <Grid item xs={12} md={4}>
                 <StyledPaper>
                   <Box>
-                    <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                    <UpperTyp color='secondary' gutterBottom>
                       About Us
-                    </Typography>
+                    </UpperTyp>
                     <Typography variant="body1" gutterBottom>
                       Our company is <br/> proud of our history
                     </Typography>
                   </Box>
-                  <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                  <AlignRight>
                     <ActionButton color='primary' variant="contained">
                       Learn more
                     </ActionButton>
-                  </div>
+                  </AlignRight>
                 </StyledPaper>
               </Grid>
 
               <Grid item xs={12} md={4}>
                 <StyledPaper>
                   <Box>
-                    <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                    <UpperTyp color='secondary' gutterBottom>
                       Our Latest Offering
-                    </Typography>
+                    </UpperTyp>
                     <Typography variant="body1" gutterBottom>
                       Check it out!
                     </Typography>
                   </Box>
-                  <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+                  <AlignRight>
                     <ActionButton color='primary' variant="contained">
                       Learn more
                     </ActionButton>
-                  </div>
+                  </AlignRight>
                 </StyledPaper>
               </Grid>
 
               <Grid item xs={12} md={4}>
                 <StyledPaper>
                   <Box>
-                    <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
+                    <UpperTyp color='secondary' gutterBottom>
                       Our Blog
-                    </Typography>
+                    </UpperTyp>
                     <Typography variant="body1" gutterBottom>
                       See where we've been, or get going!
                     </Typography>
@@ -148,9 +151,9 @@ class Main extends Component {
               <Grid item xs={12}>
                 <StyledPaper>
                   <Box>
-                    <Typography color='secondary' gutterBottom>
+                    <UpperTyp color='secondary' gutterBottom>
                       Full box
-                    </Typography>
+                    </UpperTyp>
                     <Typography variant="body1" gutterBottom>
                       This is an example of a full-width box
                     </Typography>
