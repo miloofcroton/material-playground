@@ -1,8 +1,12 @@
 import React from 'react';
 import { styled, withTheme } from '@material-ui/styles';
 import { Typography, Paper, Avatar } from '@material-ui/core';
-import { Description } from '@material-ui/icons';
+import { Description as DescriptionIcon } from '@material-ui/icons';
 import ButtonBar from '../../lib/buttons/ButtonBar';
+
+const CardSpacing = styled('div')({
+  marginTop: 20,
+});
 
 const PaperStyled = styled(Paper)(({ theme }) => ({
   padding: theme.spacing.unit * 3,
@@ -73,58 +77,60 @@ const UpperType = styled(Typography)({
   textTransform: 'uppercase'
 });
 
-const CardItem = () => {
+const Card = ({ months, creation, amount, frequency }) => {
 
   return (
-    <PaperStyled>
-      <ItemContainer>
+    <CardSpacing>
+      <PaperStyled>
+        <ItemContainer>
 
-        <AvatarContainer>
-          <AvatarStyled>
-            <Description/>
-          </AvatarStyled>
-        </AvatarContainer>
+          <AvatarContainer>
+            <AvatarStyled>
+              <DescriptionIcon/>
+            </AvatarStyled>
+          </AvatarContainer>
 
-        <Baseline>
-          <Inline>
+          <Baseline>
+            <Inline>
+              <UpperType color='secondary' gutterBottom>
+                Months
+              </UpperType>
+              <Typography variant="h6" gutterBottom>
+                {months}
+              </Typography>
+            </Inline>
+            <Inline>
+              <UpperType color='secondary' gutterBottom>
+                Creation date
+              </UpperType>
+              <Typography variant="h6" gutterBottom>
+                {creation}
+              </Typography>
+            </Inline>
+            <Inline>
+              <UpperType color='secondary' gutterBottom>
+                Amount
+              </UpperType>
+              <Typography variant="h6" gutterBottom>
+                {amount}
+              </Typography>
+            </Inline>
+          </Baseline>
+
+          <InlineRight>
             <UpperType color='secondary' gutterBottom>
-              Months
+              Frequency
             </UpperType>
-            <Typography variant="h6" gutterBottom>
-              4 month(s)
+            <Typography variant="h4" gutterBottom>
+              {frequency}
             </Typography>
-          </Inline>
-          <Inline>
-            <UpperType color='secondary' gutterBottom>
-              Creation date
-            </UpperType>
-            <Typography variant="h6" gutterBottom>
-              01 February 2019
-            </Typography>
-          </Inline>
-          <Inline>
-            <UpperType color='secondary' gutterBottom>
-              Amount
-            </UpperType>
-            <Typography variant="h6" gutterBottom>
-              6,600 USD
-            </Typography>
-          </Inline>
-        </Baseline>
+            <ButtonBar />
+          </InlineRight>
 
-        <InlineRight>
-          <UpperType color='secondary' gutterBottom>
-            Other Amount
-          </UpperType>
-          <Typography variant="h4" gutterBottom>
-            Once a month
-          </Typography>
-          <ButtonBar />
-        </InlineRight>
-
-      </ItemContainer>
-    </PaperStyled>
+        </ItemContainer>
+      </PaperStyled>
+    </CardSpacing>
   )
 };
 
-export default withTheme()(CardItem);
+export default withTheme()(Card);
