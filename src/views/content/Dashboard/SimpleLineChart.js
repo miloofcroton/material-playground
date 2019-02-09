@@ -1,10 +1,10 @@
 import React from 'react';
+import { withTheme } from '@material-ui/core/styles';
 import ResponsiveContainer from 'recharts/lib/component/ResponsiveContainer';
 import BarChart from 'recharts/lib/chart/BarChart';
 import Bar from 'recharts/lib/cartesian/Bar';
 import XAxis from 'recharts/lib/cartesian/XAxis';
 import Tooltip from 'recharts/lib/component/Tooltip';
-import { withTheme } from '@material-ui/core/styles';
 
 const SimpleLineChart = ({ theme, data }) => {
 

@@ -1,24 +1,27 @@
 import React,  { Component } from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
 import { withRouter } from 'react-router-dom'
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import DoneIcon from '@material-ui/icons/Done';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Fade from '@material-ui/core/Fade';
+import {
+  Typography,
+  Grid,
+  Paper,
+  Button,
+  Stepper,
+  Step,
+  StepLabel,
+  OutlinedInput,
+  MenuItem,
+  FormControl,
+  Select,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  CircularProgress,
+  Fade,
+} from '@material-ui/core';
+import { Done } from '@material-ui/icons';
+
+import withStyles from '@material-ui/core/styles/withStyles';
 
 import Back from '../../lib/navigation/Back';
 const backgroundShape = require('../../../assets/images/shape.svg');
@@ -265,13 +268,13 @@ class Signup extends Component {
                           <List component="nav">
                             <ListItem>
                               <ListItemIcon>
-                                <DoneIcon />
+                                <Done />
                               </ListItemIcon>
                               <ListItemText inset primary="0297 00988200918" />
                             </ListItem>
                             <ListItem>
                               <ListItemIcon>
-                                <DoneIcon />
+                                <Done />
                               </ListItemIcon>
                               <ListItemText inset primary="0297 00988200920" />
                             </ListItem>

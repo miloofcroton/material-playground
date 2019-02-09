@@ -1,8 +1,7 @@
 import React from 'react';
-import { styled, withTheme } from '@material-ui/styles';
-
-import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
+import { styled, withTheme } from '@material-ui/styles';
+import { Typography } from '@material-ui/core';
 
 const SectionContainer = styled('div')(({ theme }) => ({
   marginTop: theme.spacing.unit * 4,

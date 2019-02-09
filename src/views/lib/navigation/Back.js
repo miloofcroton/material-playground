@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { styled } from '@material-ui/styles';
-
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import Typography from '@material-ui/core/Typography';
 import { Link, withRouter } from 'react-router-dom';
-
+import { styled } from '@material-ui/styles';
+import { Typography } from '@material-ui/core';
+import { KeyboardArrowLeft } from '@material-ui/icons';
 
 const Text = styled('span')({
   display: 'inline-block',

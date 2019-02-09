@@ -1,10 +1,7 @@
 import React from 'react';
 import { styled, withTheme } from '@material-ui/styles';
-
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Avatar from '@material-ui/core/Avatar';
-import DescriptionIcon from '@material-ui/icons/Description';
+import { Typography, Paper, Avatar } from '@material-ui/core';
+import { Description } from '@material-ui/icons';
 import ButtonBar from '../../lib/buttons/ButtonBar';
 
 const PaperStyled = styled(Paper)(({ theme }) => ({
@@ -84,7 +81,7 @@ const CardItem = () => {
 
         <AvatarContainer>
           <AvatarStyled>
-            <DescriptionIcon/>
+            <Description/>
           </AvatarStyled>
         </AvatarContainer>
 

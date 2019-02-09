@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled, withTheme } from '@material-ui/styles';
+import { Button } from '@material-ui/core';
 
-import Button from '@material-ui/core/Button';
 
 const Primary = styled(Button)(({ theme }) => ({
   marginRight: theme.spacing.unit * 2

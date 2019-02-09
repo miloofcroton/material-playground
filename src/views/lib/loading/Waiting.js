@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import { styled } from '@material-ui/styles';
+import { Typography } from '@material-ui/core';
 
 const WaitingDiv = styled('div')(props => ({
   display: props.loading === 'true' ? 'block' : 'none',

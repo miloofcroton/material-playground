@@ -1,8 +1,6 @@
 import React from 'react';
 import { styled } from '@material-ui/styles';
-import Dialog from '@material-ui/core/Dialog';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import { Dialog, DialogContent, DialogTitle } from '@material-ui/core';
 
 const Container = styled('div')({
   maxWidth: 600,

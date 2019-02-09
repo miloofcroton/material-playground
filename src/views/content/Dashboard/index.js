@@ -1,15 +1,9 @@
 import React,  { Component } from 'react';
-import { styled, withTheme } from '@material-ui/styles';
-
 import { withRouter, Link } from 'react-router-dom';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Slider from '@material-ui/lab/Slider';
-import Button from '@material-ui/core/Button';
-import Avatar from '@material-ui/core/Avatar';
-import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
-
+import { styled, withTheme } from '@material-ui/styles';
+import { Paper, Typography, Grid, Button, Avatar } from '@material-ui/core';
+import { Slider } from '@material-ui/lab';
+import { VerifiedUser } from '@material-ui/icons';
 import SimpleLineChart from './SimpleLineChart';
 import Months from '../../lib/datetime/Months';
 import Waiting from '../../lib/loading/Waiting';
@@ -342,7 +336,7 @@ class Dashboard extends Component {
                       State
                     </Typography>
                     <MainBadge>
-                      <VerifiedUserIcon
+                      <VerifiedUser
                         style={{fontSize: 72}}
                         fontSize={'large'}
                         color={'secondary'}
