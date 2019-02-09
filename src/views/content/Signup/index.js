@@ -238,7 +238,7 @@ class Signup extends Component {
                           <Typography variant="body2" gutterBottom>
                             Sign and confirm loan agreement
                           </Typography>
-                          <Typography variant="bod1" gutterBottom>
+                          <Typography variant="body1" gutterBottom>
                             One text to explain that
                           </Typography>
                         </Grid>

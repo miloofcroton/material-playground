@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { styled } from '@material-ui/styles';
-import muiTheme from '../../layout/theme/mui';
+import { styled, withTheme } from '@material-ui/styles';
 
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -9,19 +8,9 @@ import BaseDialog from './BaseDialog';
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   marginBottom: theme.spacing.unit * 2
-}), { defaultTheme: muiTheme });
+}));
 
-
-// This should be applied, but there's a bug with Material-UI's CSS in JS
-
-// const StyledButton = styled(DashButton)(props => ({
-//   marginBottom: props.theme.spacing.unit * 2
-// }), {
-//   defaultTheme: muiTheme
-// });
-
-
-const InstructionDialog = ({ ...props }) => {
+const InstructionDialog = (props) => {
 
   const handleClose = () => console.log('Make me do something');
 
@@ -37,6 +26,9 @@ const InstructionDialog = ({ ...props }) => {
         onClick={handleClose}
         color='primary'
         autoFocus
+        style={{
+          marginBottom: props.theme.spacing.unit * 2
+        }}
       >
         Getting started
       </Button>
@@ -54,4 +46,4 @@ const InstructionDialog = ({ ...props }) => {
   )
 }
 
-export default withRouter(InstructionDialog);
+export default withRouter(withTheme()(InstructionDialog));

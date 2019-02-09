@@ -1,11 +1,9 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { styled } from '@material-ui/styles';
-import muiTheme from '../../layout/theme/mui';
+import { styled, withTheme } from '@material-ui/styles';
 
 import CardItem from './CardItem';
 import SectionHeader from '../../lib/text/SectionHeader';
-
 
 const backgroundShape = require('../../../assets/images/shape.svg');
 
@@ -19,7 +17,7 @@ const RootDiv = styled('div')(({ theme }) => ({
   marginTop: 20,
   padding: 20,
   paddingBottom: 200,
-}), { defaultTheme: muiTheme });
+}));
 
 const StyledGrid = styled(Grid)({
   width: 1000
@@ -43,4 +41,4 @@ const Cards = () => {
   );
 };
 
-export default Cards;
+export default withTheme()(Cards);

@@ -1,15 +1,15 @@
 import React from 'react';
-import { styled } from '@material-ui/styles';
-import muiTheme from '../../layout/theme/mui';
+import { styled, withTheme } from '@material-ui/styles';
+
 import Button from '@material-ui/core/Button';
 
 const Primary = styled(Button)(({ theme }) => ({
   marginRight: theme.spacing.unit * 2
-}), { defaultTheme: muiTheme });
+}));
 
 const Secondary = styled(Button)(({ theme }) => ({
   marginRight: theme.spacing.unit * 2
-}), { defaultTheme: muiTheme });
+}));
 
 const SpaceTop = styled('div')({
   marginTop: 20
@@ -30,4 +30,4 @@ const ButtonBar = () => {
   );
 }
 
-export default ButtonBar;
+export default withTheme()(ButtonBar);

@@ -12,6 +12,7 @@ install();
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import muiTheme from './layout/theme/mui'
 import GlobalStyle from './layout/theme/style';
 
@@ -24,19 +25,21 @@ export const history = createHistory();
 const App = () => {
   return (
     <MuiThemeProvider theme={muiTheme}>
-      <Router history={history}>
-        <Fragment>
-          <CssBaseline />
-          <GlobalStyle />
-          <Head/>
-          <Header/>
-          <ScrollToTop>
-            <Switch>
-              <Switches/>
-            </Switch>
-          </ScrollToTop>
-        </Fragment>
-      </Router>
+      <ThemeProvider theme={muiTheme}>
+        <Router history={history}>
+          <Fragment>
+            <CssBaseline />
+            <GlobalStyle />
+            <Head/>
+            <Header/>
+            <ScrollToTop>
+              <Switch>
+                <Switches/>
+              </Switch>
+            </ScrollToTop>
+          </Fragment>
+        </Router>
+      </ThemeProvider>
     </MuiThemeProvider>
   );
 }

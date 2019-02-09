@@ -1,6 +1,5 @@
 import React from 'react';
-import { styled } from '@material-ui/styles';
-import muiTheme from '../../layout/theme/mui';
+import { styled, withTheme } from '@material-ui/styles';
 
 import Typography from '@material-ui/core/Typography';
 import { withRouter } from 'react-router-dom';
@@ -8,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 const SectionContainer = styled('div')(({ theme }) => ({
   marginTop: theme.spacing.unit * 4,
   marginBottom: theme.spacing.unit * 4
-}), { defaultTheme: muiTheme });
+}));
 
 const Title = styled(Typography)({
   fontWeight: 'bold'
@@ -28,4 +27,4 @@ const SectionHeader = ({ title, subtitle }) => {
   );
 };
 
-export default withRouter(SectionHeader);
+export default withRouter(withTheme()(SectionHeader));

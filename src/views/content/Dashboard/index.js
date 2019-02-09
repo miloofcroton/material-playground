@@ -1,5 +1,6 @@
 import React,  { Component } from 'react';
-import withStyles from '@material-ui/core/styles/withStyles';
+import { styled, withTheme } from '@material-ui/styles';
+
 import { withRouter, Link } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -12,99 +13,113 @@ import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 
 import SimpleLineChart from './SimpleLineChart';
 import Months from '../../lib/datetime/Months';
-import Loading from '../../lib/loading/Waiting';
+import Waiting from '../../lib/loading/Waiting';
 const numeral = require('numeral');
 numeral.defaultFormat('0,000');
 const backgroundShape = require('../../../assets/images/shape.svg');
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.grey['100'],
-    overflow: 'hidden',
-    background: `url(${backgroundShape}) no-repeat`,
-    backgroundSize: 'cover',
-    backgroundPosition: '0 400px',
-    paddingBottom: 200
-  },
-  grid: {
-    width: 1200,
-    margin: `0 ${theme.spacing.unit * 2}px`,
-    [theme.breakpoints.down('sm')]: {
-      width: 'calc(100% - 20px)'
-    }
-  },
-  loadingState: {
-    opacity: 0.05
-  },
-  paper: {
-    padding: theme.spacing.unit * 3,
-    textAlign: 'left',
-    color: theme.palette.text.secondary
-  },
-  rangeLabel: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    paddingTop: theme.spacing.unit * 2
-  },
-  topBar: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  outlinedButtom: {
-    textTransform: 'uppercase',
-    margin: theme.spacing.unit
-  },
-  actionButtom: {
-    textTransform: 'uppercase',
-    margin: theme.spacing.unit,
-    width: 152,
-    height: 36
-  },
-  blockCenter: {
-    padding: theme.spacing.unit * 2,
-    textAlign: 'center'
-  },
-  block: {
-    padding: theme.spacing.unit * 2,
-  },
-  loanAvatar: {
-    display: 'inline-block',
-    verticalAlign: 'center',
-    width: 16,
-    height: 16,
-    marginRight: 10,
-    marginBottom: -2,
-    color: theme.palette.primary.contrastText,
-    backgroundColor: theme.palette.primary.main
-  },
-  interestAvatar: {
-    display: 'inline-block',
-    verticalAlign: 'center',
-    width: 16,
-    height: 16,
-    marginRight: 10,
-    marginBottom: -2,
-    color: theme.palette.primary.contrastText,
-    backgroundColor: theme.palette.primary.light
-  },
-  inlining: {
-    display: 'inline-block',
-    marginRight: 10
-  },
-  buttonBar: {
-    display: 'flex'
-  },
-  noBorder: {
-    borderBottomStyle: 'hidden'
-  },
-  mainBadge: {
-    textAlign: 'center',
-    marginTop: theme.spacing.unit * 4,
-    marginBottom: theme.spacing.unit * 4
-  }
+const DivRoot = styled('div')(({ theme }) => ({
+  flexGrow: 1,
+  backgroundColor: theme.palette.grey['100'],
+  overflow: 'hidden',
+  background: `url(${backgroundShape}) no-repeat`,
+  backgroundSize: 'cover',
+  backgroundPosition: '0 400px',
+  paddingBottom: 200
+}));
+
+const WithLoading = styled('div')(props => ({
+  opacity: props.loading === 'true' ? 0.05 : 'inherit',
+}));
+
+const LoanAvatar = styled(Avatar)(({ theme }) => ({
+  display: 'inline-block',
+  verticalAlign: 'center',
+  width: 16,
+  height: 16,
+  marginRight: 10,
+  marginBottom: -2,
+  color: theme.palette.primary.contrastText,
+  backgroundColor: theme.palette.primary.main
+}));
+
+const InterestAvatar = styled(Avatar)(({ theme }) => ({
+  display: 'inline-block',
+  verticalAlign: 'center',
+  width: 16,
+  height: 16,
+  marginRight: 10,
+  marginBottom: -2,
+  color: theme.palette.primary.contrastText,
+  backgroundColor: theme.palette.primary.light
+}));
+
+const TopBar = styled('div')({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center'
 });
+
+const ButtonBar = styled('div')({
+  display: 'flex',
+});
+
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing.unit * 3,
+  textAlign: 'left',
+  color: theme.palette.text.secondary
+}));
+
+const StyledPaperRelative = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing.unit * 3,
+  textAlign: 'left',
+  color: theme.palette.text.secondary,
+  position: 'relative'
+}));
+
+const MainBadge = styled('div')(({ theme }) => ({
+  textAlign: 'center',
+  marginTop: theme.spacing.unit * 4,
+  marginBottom: theme.spacing.unit * 4
+}));
+
+const OutlinedButton = styled(Button)(({ theme }) => ({
+  textTransform: 'uppercase',
+  margin: theme.spacing.unit
+}));
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  width: 1200,
+  margin: `0 ${theme.spacing.unit * 2}px`,
+  [theme.breakpoints.down('sm')]: {
+    width: 'calc(100% - 20px)'
+  }
+}));
+
+const RangeLabel = styled('div')(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  paddingTop: theme.spacing.unit * 2
+}));
+
+const BlockCenter = styled('div')(({ theme }) => ({
+  padding: theme.spacing.unit * 2,
+  textAlign: 'center'
+}));
+
+const Block = styled('div')(({ theme }) => ({
+  padding: theme.spacing.unit * 2,
+}));
+
+const InlineDiv = styled('div')(({ theme }) => ({
+  display: 'inline-block',
+  marginRight: 10
+}));
+
+const InlineTyp = styled(Typography)(({ theme }) => ({
+  display: 'inline-block',
+  marginRight: 10
+}));
 
 const monthRange = Months;
 
@@ -161,212 +176,239 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { classes } = this.props;
-    const { amount, period, start, monthlyPayment,
-      monthlyInterest, data, loading } = this.state;
+    const { theme } = this.props;
+    const {
+      amount,
+      period,
+      start,
+      monthlyPayment,
+      monthlyInterest,
+      data,
+      loading,
+    } = this.state;
 
     return (
-      <React.Fragment>
-        <div className={classes.root}>
-          <Grid container justify="center">
-            <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
-              <Grid item xs={12}>
-                <div className={classes.topBar}>
-                  <div className={classes.block}>
-                    <Typography variant="h6" gutterBottom>Dashboard</Typography>
-                    <Typography variant="body2">
-                      Adjust and play with our sliders.
+      <DivRoot>
+        <Grid container justify="center">
+          <StyledGrid spacing={24} alignItems="center" justify="center" container>
+
+            <Grid item xs={12}>
+              <TopBar>
+                <Block>
+                  <Typography variant="h6" gutterBottom>Dashboard</Typography>
+                  <Typography variant="body2">Adjust and play with our sliders.</Typography>
+                </Block>
+                <OutlinedButton variant="outlined">Get help</OutlinedButton>
+              </TopBar>
+            </Grid>
+
+            <Grid item xs={12} md={4}>
+              <StyledPaper>
+                <div>
+                  <Typography variant="subtitle1" gutterBottom>
+                    How much you want to transfer
+                  </Typography>
+                  <Typography variant="body2">
+                    Use slider to set the amount you need.
+                  </Typography>
+                  <BlockCenter>
+                    <Typography color='secondary' variant="h6" gutterBottom>
+                      {numeral(amount).format()} USD
                     </Typography>
-                  </div>
+                  </BlockCenter>
                   <div>
-                    <Button variant="outlined" className={classes.outlinedButtom}>
-                      Get help
-                    </Button>
+                    <Slider
+                      value={amount}
+                      min={20000}
+                      max={150000}
+                      step={15000}
+                      onChange={this.handleChangeAmount}
+                    />
                   </div>
+                  <RangeLabel>
+                    <div>
+                      <Typography variant="subtitle2">
+                        15,000 USD
+                      </Typography>
+                    </div>
+                    <div>
+                      <Typography variant="subtitle2">
+                        150,000 USD
+                      </Typography>
+                    </div>
+                  </RangeLabel>
                 </div>
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Paper className={classes.paper}>
+              </StyledPaper>
+            </Grid>
+
+            <Grid item xs={12} md={4}>
+              <StyledPaper>
+                <div>
+                  <Typography variant="subtitle1" gutterBottom>
+                    Period
+                  </Typography>
+                  <Typography variant="body2">
+                    A sample period
+                  </Typography>
+                  <BlockCenter>
+                    <Typography color='secondary' variant="h6" gutterBottom>
+                      {period} months
+                    </Typography>
+                  </BlockCenter>
                   <div>
-                    <Typography variant="subtitle1" gutterBottom>
-                      How much you want to transfer
-                    </Typography>
-                    <Typography variant="body2">
-                      Use slider to set the amount you need.
-                    </Typography>
-                    <div className={classes.blockCenter}>
-                      <Typography color='secondary' variant="h6" gutterBottom>
-                        {numeral(amount).format()} USD
+                    <Slider
+                      value={period}
+                      min={1}
+                      max={6}
+                      step={1}
+                      onChange={this.handleChangePeriod}
+                    />
+                  </div>
+                  <RangeLabel>
+                    <div>
+                      <Typography variant="subtitle2">
+                        1 month
                       </Typography>
                     </div>
                     <div>
-                      <Slider
-                        value={amount}
-                        min={20000}
-                        max={150000}
-                        step={15000}
-                        onChange={this.handleChangeAmount}
-                      />
+                      <Typography variant="subtitle2">
+                        6 months
+                      </Typography>
                     </div>
-                    <div className={classes.rangeLabel}>
-                      <div>
-                        <Typography variant="subtitle2">
-                          15,000 USD
-                        </Typography>
-                      </div>
-                      <div>
-                        <Typography variant="subtitle2">
-                          150,000 USD
-                        </Typography>
-                      </div>
-                    </div>
-                  </div>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Paper className={classes.paper}>
+                  </RangeLabel>
+                </div>
+              </StyledPaper>
+            </Grid>
+
+            <Grid item xs={12} md={4}>
+              <StyledPaper>
+                <div>
+                  <Typography variant="subtitle1" gutterBottom>
+                    Start date
+                  </Typography>
+                  <Typography variant="body2">
+                    Set your preferred start date.
+                  </Typography>
+                  <BlockCenter>
+                    <Typography color='secondary' variant="h6" gutterBottom>
+                      {monthRange[start]}
+                    </Typography>
+                  </BlockCenter>
                   <div>
-                    <Typography variant="subtitle1" gutterBottom>
-                      Period
-                    </Typography>
-                    <Typography variant="body2">
-                      A sample period
-                    </Typography>
-                    <div className={classes.blockCenter}>
-                      <Typography color='secondary' variant="h6" gutterBottom>
-                        {period} months
+                    <Slider
+                      value={start}
+                      min={0}
+                      max={5}
+                      step={1}
+                      onChange={this.handleChangeStart}
+                    />
+                  </div>
+                  <RangeLabel>
+                    <div>
+                      <Typography variant="subtitle2">
+                        Dec 2018
                       </Typography>
                     </div>
                     <div>
-                      <Slider
-                        value={period}
-                        min={1}
-                        max={6}
-                        step={1}
-                        onChange={this.handleChangePeriod}
-                      />
+                      <Typography variant="subtitle2">
+                        May 2019
+                      </Typography>
                     </div>
-                    <div className={classes.rangeLabel}>
-                      <div>
-                        <Typography variant="subtitle2">
-                          1 month
-                        </Typography>
-                      </div>
-                      <div>
-                        <Typography variant="subtitle2">
-                          6 months
-                        </Typography>
-                      </div>
-                    </div>
-                  </div>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={4}>
-                <Paper className={classes.paper}>
-                  <div>
-                    <Typography variant="subtitle1" gutterBottom>
-                      Start date
+                  </RangeLabel>
+                </div>
+              </StyledPaper>
+            </Grid>
+
+            <Grid container item spacing={24} xs={12} justify="center">
+              <Grid item xs={12} md={8} >
+                <StyledPaperRelative>
+                  <Waiting loading={loading} />
+                  <WithLoading loading={loading.toString()}>
+                    <Typography variant='subtitle1' gutterBottom>
+                      Some details
                     </Typography>
-                    <Typography variant="body2">
-                      Set your preferred start date.
+                    <Typography variant='body2'>
+                      Details about the graph
                     </Typography>
-                    <div className={classes.blockCenter}>
-                      <Typography color='secondary' variant="h6" gutterBottom>
-                        {monthRange[start]}
-                      </Typography>
+                    <div style={{marginTop: 14, marginBottom: 14}}>
+                      <InlineDiv>
+                        <LoanAvatar></LoanAvatar>
+                        <InlineTyp variant='subtitle2' gutterBottom>
+                          Type
+                        </InlineTyp>
+                        <InlineTyp color='secondary' variant="h6" gutterBottom>
+                          {numeral(monthlyPayment).format()} units
+                        </InlineTyp>
+                      </InlineDiv>
+                      <InlineDiv>
+                        <InterestAvatar></InterestAvatar>
+                        <InlineTyp variant='subtitle2' gutterBottom>
+                          Othe type
+                        </InlineTyp>
+                        <InlineTyp color='secondary' variant="h6" gutterBottom>
+                          {numeral(monthlyInterest).format()} units
+                        </InlineTyp>
+                      </InlineDiv>
                     </div>
-                    <div>
-                      <Slider
-                        value={start}
-                        min={0}
-                        max={5}
-                        step={1}
-                        onChange={this.handleChangeStart}
-                      />
+                    <div >
+                      <SimpleLineChart data={data} />
                     </div>
-                    <div className={classes.rangeLabel}>
-                      <div>
-                        <Typography variant="subtitle2">
-                          Dec 2018
-                        </Typography>
-                      </div>
-                      <div>
-                        <Typography variant="subtitle2">
-                          May 2019
-                        </Typography>
-                      </div>
-                    </div>
-                  </div>
-                </Paper>
+                  </WithLoading>
+                </StyledPaperRelative>
               </Grid>
-              <Grid container item spacing={24} xs={12} justify="center">
-                <Grid item xs={12} md={8} >
-                  <Paper className={classes.paper} style={{position: 'relative'}}>
-                    <Loading loading={loading} />
-                    <div className={loading ? classes.loadingState : ''}>
-                      <Typography variant="subtitle1" gutterBottom>
-                        Some details
-                      </Typography>
-                      <Typography variant="body2">
-                        Details about the graph
-                      </Typography>
-                      <div style={{marginTop: 14, marginBottom: 14}}>
-                        <div className={classes.inlining}>
-                          <Avatar className={classes.loanAvatar}></Avatar>
-                          <Typography className={classes.inlining} variant="subtitle2" gutterBottom>
-                            Type
-                          </Typography>
-                          <Typography className={classes.inlining} color='secondary' variant="h6" gutterBottom>
-                            {numeral(monthlyPayment).format()} units
-                          </Typography>
-                        </div>
-                        <div className={classes.inlining}>
-                          <Avatar className={classes.interestAvatar}></Avatar>
-                          <Typography className={classes.inlining} variant="subtitle2" gutterBottom>
-                            Othe type
-                          </Typography>
-                          <Typography className={classes.inlining} color="secondary" variant="h6" gutterBottom>
-                            {numeral(monthlyInterest).format()} units
-                          </Typography>
-                        </div>
-                      </div>
-                      <div >
-                        <SimpleLineChart data={data} />
-                      </div>
-                    </div>
-                  </Paper>
-              </Grid>
+
               <Grid item xs={12} md={4}>
-                <Paper className={classes.paper} style={{position: 'relative'}}>
-                  <Loading loading={loading} />
-                  <div className={loading ? classes.loadingState : ''}>
+                <StyledPaperRelative>
+                  <Waiting loading={loading} />
+                  <WithLoading loading={loading.toString()}>
                     <Typography variant="subtitle1" gutterBottom>
                       State
                     </Typography>
-                    <div className={classes.mainBadge}>
+                    <MainBadge>
                       <VerifiedUserIcon style={{fontSize: 72}} fontSize={'large'} color={'secondary'} />
                       <Typography variant="h5" color={'secondary'} gutterBottom>
                         Verified
                       </Typography>
-                    </div>
-                    <div className={classes.buttonBar}>
-                      <Button to={{ pathname: "/dashboard", search: `?type=save` }} component={Link} variant="outlined" className={classes.actionButtom}>
+                    </MainBadge>
+                    <ButtonBar>
+                      <Button
+                        to={{ pathname: "/dashboard", search: `?type=save` }}
+                        component={Link}
+                        variant="outlined"
+                        style={{
+                          textTransform: 'uppercase',
+                          margin: theme.spacing.unit,
+                          width: 152,
+                          height: 36
+                        }}
+                      >
                         Save
                       </Button>
-                      <Button to={{ pathname: "/dashboard", search: `?type=apply` }} component={Link} color='primary' variant="contained" className={classes.actionButtom}>
+                      <Button
+                        to={{ pathname: "/dashboard", search: `?type=apply` }}
+                        component={Link}
+                        color='primary'
+                        variant='contained'
+                        style={{
+                          textTransform: 'uppercase',
+                          margin: theme.spacing.unit,
+                          width: 152,
+                          height: 36
+                        }}
+                      >
                         Apply
                       </Button>
-                    </div>
-                  </div>
-                  </Paper>
-                </Grid>
+                    </ButtonBar>
+                  </WithLoading>
+                </StyledPaperRelative>
               </Grid>
             </Grid>
-          </Grid>
-        </div>
-      </React.Fragment>
+
+          </StyledGrid>
+        </Grid>
+      </DivRoot>
     )
   }
 }
 
-export default withRouter(withStyles(styles)(Dashboard));
+export default withRouter(withTheme()(Dashboard));

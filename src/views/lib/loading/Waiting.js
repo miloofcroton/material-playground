@@ -3,8 +3,8 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { styled } from '@material-ui/styles';
 
-const LoadingDiv = styled(Typography)(props => ({
-  display: props.loading ? 'block' : 'none',
+const WaitingDiv = styled('div')(props => ({
+  display: props.loading === 'true' ? 'block' : 'none',
   position: 'absolute',
   top: '40%',
   left: '40%',
@@ -20,14 +20,14 @@ const EmojiSpan = styled('span')({
 const Waiting = ({ loading }) => {
 
   return (
-    <LoadingDiv loading={loading}>
+    <WaitingDiv loading={loading.toString()}>
       <EmojiSpan role='img' aria-label='emoji' >
         👋
       </EmojiSpan>
       <Typography variant="h6">
         Waiting for input
       </Typography>
-    </LoadingDiv>
+    </WaitingDiv>
   );
 }
 

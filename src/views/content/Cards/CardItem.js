@@ -1,6 +1,5 @@
 import React from 'react';
-import { styled } from '@material-ui/styles';
-import muiTheme from '../../layout/theme/mui';
+import { styled, withTheme } from '@material-ui/styles';
 
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -12,20 +11,20 @@ const PaperStyled = styled(Paper)(({ theme }) => ({
   padding: theme.spacing.unit * 3,
   textAlign: 'left',
   color: theme.palette.text.secondary
-}), { defaultTheme: muiTheme });
+}));
 
 const AvatarStyled = styled(Avatar)(({ theme }) => ({
   margin: 10,
   backgroundColor: theme.palette.grey['200'],
   color: theme.palette.text.primary,
-}), { defaultTheme: muiTheme });
+}));
 
 const AvatarContainer = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     marginLeft: 0,
     marginBottom: theme.spacing.unit * 4
   }
-}), { defaultTheme: muiTheme });
+}));
 
 const ItemContainer = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -36,7 +35,7 @@ const ItemContainer = styled('div')(({ theme }) => ({
     flexDirection: 'column',
     justifyContent: 'center'
   }
-}), { defaultTheme: muiTheme });
+}));
 
 const Baseline = styled('div')(({ theme }) => ({
   alignSelf: 'baseline',
@@ -51,7 +50,7 @@ const Baseline = styled('div')(({ theme }) => ({
     marginBottom: theme.spacing.unit * 2,
     marginLeft: 0
   }
-}), { defaultTheme: muiTheme });
+}));
 
 const Inline = styled('div')(({ theme }) => ({
   display: 'inline-block',
@@ -59,7 +58,7 @@ const Inline = styled('div')(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     marginLeft: 0
   }
-}), { defaultTheme: muiTheme });
+}));
 
 const InlineRight = styled('div')(({ theme }) => ({
   width: '30%',
@@ -71,7 +70,7 @@ const InlineRight = styled('div')(({ theme }) => ({
     margin: 0,
     textAlign: 'center'
   }
-}), { defaultTheme: muiTheme });
+}));
 
 const UpperType = styled(Typography)({
   textTransform: 'uppercase'
@@ -131,4 +130,4 @@ const CardItem = () => {
   )
 };
 
-export default CardItem;
+export default withTheme()(CardItem);
