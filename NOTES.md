@@ -20,7 +20,7 @@ Design concepts:
           - most/all of the logic of the mini app
             - functions
             - state
-        - pages/panes for the mini app
+        - pages/panes for the mini app (most/all are functional components)
         - styles.js (for mini style components to use in your mini app pages/panes)
     - Layout is the core app (the SPA)
     - Lib doesn't really have apps, unless you expect to use them in several places under content
