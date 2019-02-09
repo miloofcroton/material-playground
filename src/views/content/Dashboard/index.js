@@ -9,7 +9,6 @@ import Slider from '@material-ui/lab/Slider';
 import Button from '@material-ui/core/Button';
 import Avatar from '@material-ui/core/Avatar';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
-// import { styled } from '@material-ui/styles';
 
 import SimpleLineChart from './SimpleLineChart';
 import Months from '../../lib/datetime/Months';
@@ -195,8 +194,12 @@ class Dashboard extends Component {
             <Grid item xs={12}>
               <TopBar>
                 <Block>
-                  <Typography variant="h6" gutterBottom>Dashboard</Typography>
-                  <Typography variant="body2">Adjust and play with our sliders.</Typography>
+                  <Typography variant="h6" gutterBottom>
+                    Dashboard
+                  </Typography>
+                  <Typography variant="body2">
+                    Adjust and play with our sliders.
+                  </Typography>
                 </Block>
                 <OutlinedButton variant="outlined">Get help</OutlinedButton>
               </TopBar>
@@ -204,118 +207,94 @@ class Dashboard extends Component {
 
             <Grid item xs={12} md={4}>
               <StyledPaper>
-                <div>
-                  <Typography variant="subtitle1" gutterBottom>
-                    How much you want to transfer
+                <Typography variant="subtitle1" gutterBottom>
+                  How much you want to transfer
+                </Typography>
+                <Typography variant="body2">
+                  Use slider to set the amount you need.
+                </Typography>
+                <BlockCenter>
+                  <Typography color='secondary' variant="h6" gutterBottom>
+                    {numeral(amount).format()} USD
                   </Typography>
-                  <Typography variant="body2">
-                    Use slider to set the amount you need.
+                </BlockCenter>
+                <Slider
+                  value={amount}
+                  min={20000}
+                  max={150000}
+                  step={15000}
+                  onChange={this.handleChangeAmount}
+                />
+                <RangeLabel>
+                  <Typography variant="subtitle2">
+                    15,000 USD
                   </Typography>
-                  <BlockCenter>
-                    <Typography color='secondary' variant="h6" gutterBottom>
-                      {numeral(amount).format()} USD
-                    </Typography>
-                  </BlockCenter>
-                  <div>
-                    <Slider
-                      value={amount}
-                      min={20000}
-                      max={150000}
-                      step={15000}
-                      onChange={this.handleChangeAmount}
-                    />
-                  </div>
-                  <RangeLabel>
-                    <div>
-                      <Typography variant="subtitle2">
-                        15,000 USD
-                      </Typography>
-                    </div>
-                    <div>
-                      <Typography variant="subtitle2">
-                        150,000 USD
-                      </Typography>
-                    </div>
-                  </RangeLabel>
-                </div>
+                  <Typography variant="subtitle2">
+                    150,000 USD
+                  </Typography>
+                </RangeLabel>
               </StyledPaper>
             </Grid>
 
             <Grid item xs={12} md={4}>
               <StyledPaper>
-                <div>
-                  <Typography variant="subtitle1" gutterBottom>
-                    Period
+                <Typography variant="subtitle1" gutterBottom>
+                  Period
+                </Typography>
+                <Typography variant="body2">
+                  A sample period
+                </Typography>
+                <BlockCenter>
+                  <Typography color='secondary' variant="h6" gutterBottom>
+                    {period} months
                   </Typography>
-                  <Typography variant="body2">
-                    A sample period
+                </BlockCenter>
+                <Slider
+                  value={period}
+                  min={1}
+                  max={6}
+                  step={1}
+                  onChange={this.handleChangePeriod}
+                />
+                <RangeLabel>
+                  <Typography variant="subtitle2">
+                    1 month
                   </Typography>
-                  <BlockCenter>
-                    <Typography color='secondary' variant="h6" gutterBottom>
-                      {period} months
-                    </Typography>
-                  </BlockCenter>
-                  <div>
-                    <Slider
-                      value={period}
-                      min={1}
-                      max={6}
-                      step={1}
-                      onChange={this.handleChangePeriod}
-                    />
-                  </div>
-                  <RangeLabel>
-                    <div>
-                      <Typography variant="subtitle2">
-                        1 month
-                      </Typography>
-                    </div>
-                    <div>
-                      <Typography variant="subtitle2">
-                        6 months
-                      </Typography>
-                    </div>
-                  </RangeLabel>
-                </div>
+                  <Typography variant="subtitle2">
+                    6 months
+                  </Typography>
+                </RangeLabel>
               </StyledPaper>
             </Grid>
 
             <Grid item xs={12} md={4}>
               <StyledPaper>
-                <div>
-                  <Typography variant="subtitle1" gutterBottom>
-                    Start date
+                <Typography variant="subtitle1" gutterBottom>
+                  Start date
+                </Typography>
+                <Typography variant="body2">
+                  Set your preferred start date.
+                </Typography>
+                <BlockCenter>
+                  <Typography color='secondary' variant="h6" gutterBottom>
+                    {monthRange[start]}
                   </Typography>
-                  <Typography variant="body2">
-                    Set your preferred start date.
+                </BlockCenter>
+                <Slider
+                  value={start}
+                  min={0}
+                  max={5}
+                  step={1}
+                  onChange={this.handleChangeStart}
+                />
+                <RangeLabel>
+                  <Typography variant="subtitle2">
+                    Dec 2018
                   </Typography>
-                  <BlockCenter>
-                    <Typography color='secondary' variant="h6" gutterBottom>
-                      {monthRange[start]}
-                    </Typography>
-                  </BlockCenter>
-                  <div>
-                    <Slider
-                      value={start}
-                      min={0}
-                      max={5}
-                      step={1}
-                      onChange={this.handleChangeStart}
-                    />
-                  </div>
-                  <RangeLabel>
-                    <div>
-                      <Typography variant="subtitle2">
-                        Dec 2018
-                      </Typography>
-                    </div>
-                    <div>
-                      <Typography variant="subtitle2">
-                        May 2019
-                      </Typography>
-                    </div>
-                  </RangeLabel>
-                </div>
+                  <Typography variant="subtitle2">
+                    May 2019
+                  </Typography>
+                </RangeLabel>
               </StyledPaper>
             </Grid>
 
@@ -350,9 +329,7 @@ class Dashboard extends Component {
                         </InlineTyp>
                       </InlineDiv>
                     </div>
-                    <div >
-                      <SimpleLineChart data={data} />
-                    </div>
+                    <SimpleLineChart data={data} />
                   </WithLoading>
                 </StyledPaperRelative>
               </Grid>
@@ -365,8 +342,16 @@ class Dashboard extends Component {
                       State
                     </Typography>
                     <MainBadge>
-                      <VerifiedUserIcon style={{fontSize: 72}} fontSize={'large'} color={'secondary'} />
-                      <Typography variant="h5" color={'secondary'} gutterBottom>
+                      <VerifiedUserIcon
+                        style={{fontSize: 72}}
+                        fontSize={'large'}
+                        color={'secondary'}
+                      />
+                      <Typography
+                        variant="h5"
+                        color={'secondary'}
+                        gutterBottom
+                      >
                         Verified
                       </Typography>
                     </MainBadge>
