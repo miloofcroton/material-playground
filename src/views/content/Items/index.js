@@ -44,7 +44,7 @@ const fakeData = [
   },
 ];
 
-const Cards = () => {
+const Items = () => {
 
   return (
     <RootDiv>
@@ -73,4 +73,4 @@ const Cards = () => {
   );
 };
 
-export default withTheme()(Cards);
+export default withTheme()(Items);

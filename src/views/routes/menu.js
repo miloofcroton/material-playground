@@ -8,6 +8,10 @@ const Menu = [
     pathname: "/dashboard"
   },
   {
+    label: "Items",
+    pathname: "/items"
+  },
+  {
     label: "Signup",
     pathname: "/signup"
   },
@@ -15,10 +19,6 @@ const Menu = [
     label: "Wizard",
     pathname: "/wizard"
   },
-  {
-    label: "Cards",
-    pathname: "/cards"
-  }
 
 ];
 
